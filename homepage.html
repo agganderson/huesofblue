@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Homepage</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="homepage.css">
+	</head>
+	<body>
+		<!-- <div class="container"> -->
+		<nav class = "navbar navbar-inverse">
+	    <div class="navbar-header">
+	    	<a class="navbar-brand" href="#">Different Hues of Blue</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+	    </ul>
+		</nav>
+	  	<!-- </div> -->
+		<div class='container'>
+		<div id='filters'>
+			<form>
+				<label>Issues</label>
+				<input type='checkbox' name='issue1' value='issue1'>
+								&nbsp
+								&nbsp
+				<label>Issues</label>
+				<input type='checkbox' name='issue2' value='issue2'>
+								<br>
+				<label>Issues</label>
+				<input type='checkbox' name='issue3' value='issue3'>
+								&nbsp
+								&nbsp
+				<label>Issues</label>
+				<input type='checkbox' name='issue4' value='issue4'>
+								<br>
+				<label>Issues</label>
+				<input type='checkbox' name='issue5' value='issue5'>
+								&nbsp
+								&nbsp
+				<label>Issues</label>
+				<input type='checkbox' name='issue6' value='issue6'>
+								<br>
+				<label>Issues</label>
+				<input type='checkbox' name='issue7' value='issue7'>
+								&nbsp
+								&nbsp
+				<label>Issues</label>
+				<input type='checkbox' name='issue8' value='issue8'>
+								<br>
+				<label>Issues</label>
+				<input type='checkbox' name='issue9' value='issue9'>
+								<br>
+				<button type="button" class="btn btn-info btn-sm">Submit
+		</div>
+		<div id='counselor_list'>
+			{% for counselor in counselors %}
+				<h4>Counselors Name: {{counselors['first_name']}}{{counselors['last_name']}}</h3>
+				<h5><b>Issues this counselor can help you with: {{counselor['issues'}]}}<b></h5>
+				<h5><b>Description: {{counselor['description']}}<b></h5>
+				<h5><b>Preferred Method of Interaction: {{counselor['interaction']}}<b></h5>
+				<button type="button" class="btn btn-primary btn-lg">Connect</button>
+			{% endfor %}
+		</div>
+		</div>
+	</body>
+</html>
