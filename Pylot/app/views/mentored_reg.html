@@ -13,12 +13,14 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="styles.css"/>
-<script>
-$(document).ready(function(){
-//jquery code goes here//
-});
-</script>
+
+	<!-- Our styles-->	
+ 	<link rel="stylesheet" href="styles.css"/>
+	<script>
+		$(document).ready(function(){
+		//jquery code goes here//
+		});
+	</script>
 </head>
 <body>
 	<!-- begin navbar -->
@@ -39,81 +41,76 @@ $(document).ready(function(){
 			<div class="col-md-6">
 				<h2 class="text-info">Please enter your information:</h2>
 				<br>
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form" action="/" method="POST">
 				  <div class="form-group">
 				    <label class="control-label col-sm-3 text-info">First Name:</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="first_name" placeholder="first_name" name="first_name">
+				      <input type="text" class="form-control" id="first_name" placeholder="First name" name="first_name">
 				    </div>
 				  </div>
 			  	  <div class="form-group">
 				    <label class="control-label col-sm-3 text-info">Last Name:</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="last_name" placeholder="last_name" name="last_name">
+				      <input type="text" class="form-control" id="last_name" placeholder="Last name" name="last_name">
 				    </div>
 				  </div>
 			  	  <div class="form-group">
 				    <label class="control-label col-sm-3 text-info">Email:</label>
 				    <div class="col-sm-8">
-				      <input type="email" class="form-control" id="email" placeholder="email" name="email">
+				      <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label class="control-label col-sm-3 text-info">Zipcode:</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="zipcoe" placeholder="zipcode" name="zipcode">
 				    </div>
 				  </div>
 			  	  <div class="form-group">
 				    <label class="control-label col-sm-3 text-info">Password:</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="password" placeholder="password" name="password">
+				      <input type="text" class="form-control" id="password" placeholder="Password" name="password">
 				    </div>
 				  </div>
 			  	  <div class="form-group">
 				    <label class="control-label col-sm-3 text-info">Confirm Password:</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="confirm_password" placeholder="confirm_password" name="confirm_password">
+				      <input type="text" class="form-control" id="confirm_password" placeholder="Confirm password" name="confirm_password">
 				    </div>
 				  </div>
-			  	  <div class="form-group text-left">
-				    <label class="control-label col-sm-3 text-info">Concerns:</label>
-				    <br>
-				   <form>
-					
-					<input type="checkbox" name="issue1" value="Anxiety">Anxiety<br>
-					<input type="checkbox" name="issue2" value="Depression">Depression<br>
-					<input type="checkbox" name="issue3" value="Stress">Stress<br>
-					<input type="checkbox" name="issue4" value="Substance Abuse">Substance Abuse<br>
-					<input type="checkbox" name="issue5" value="Eating Disorders">Eating Disorder<br>
-					<input type="checkbox" name="issue6" value="Self-esteem">Self-esteem<br>
-					<input type="checkbox" name="issue7" value="Relationships">Relationships<br>
-					<input type="checkbox" name="issue8" value="Loss">Loss<br>
-					<input type="checkbox" name="issue9" value="General support/Other">General support/Other<br><br>
-				</form>
-					 <!-- <div class="checkbox">
-					  <label><input type="checkbox" name="issue" value="Anxiety">Anxiety</label>
+				   <div class="form-group">
+				   	<label class="control-label col-sm-3 text-info">What brings you to this site?</label>
+				  	<div class="col-sm-8">
+					  <textarea rows="4" cols="50" name="form_q1"></textarea>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Depression</label>
+				</div>
+				 <div class="form-group">
+				   	<label class="control-label col-sm-3 text-info">Tells us about yourself</label>
+				  	<div class="col-sm-8">
+					  <textarea rows="4" cols="50" name="bio"></textarea>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Stress</label>
+				</div>
+				  <label class="control-label col-sm-3 text-info">Concerns:</label>
+
+			  	  <div class="form-group text-left col-sm-8">
+
+					 <div class="checkbox">
+					  <label><input type="checkbox" value="Anxiety" name = "concern">Anxiety</label><br>						
+					  <label><input type="checkbox" value="Depression" name = "concern">Depression</label><br>
+					  <label><input type="checkbox" value="Stress" name = "concern">Stress</label><br>
+					  <label><input type="checkbox" value="Substance_Abuse" name = "concern">Substance Abuse</label><br>			
+					  <label><input type="checkbox" value="Eating_Disorder" name = "concern">Eating Disorders</label><br>
+					  <label><input type="checkbox" value="Self_Esteem" name = "concern">Self-esteem</label><br>
+					  <label><input type="checkbox" value="Relationships" name = "concern">Relationships</label><br>
+					  <label><input type="checkbox" value="Loss" name = "concern" >Loss</label><br>	
+					  <label><input type="checkbox" value="Other" name = "concern">General Support/Other</label>
 					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Substance Abuse</label>
-					</div>					
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Eating Disorders</label>
-					</div>					
-							
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Self-esteem</label>
-					</div>					
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Relationships</label>
-					</div>					
-					<div class="checkbox">
-					  <label><input type="checkbox" value="" >Loss</label>
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">General Support/Other</label>
-					</div>
-				  </div>  -->
+				  </div>
+				  <div class= "form-group">
+				  	<div class="col-sm-8">
+				   <button type="submit" class="btn btn-primary">Submit</button> 
+				</div>
+				</div>
 				</form>
 			</div>
 		</div>
@@ -121,7 +118,3 @@ $(document).ready(function(){
 	</div>
 </body>
 </html>
-
-
-
-
