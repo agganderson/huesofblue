@@ -17,6 +17,7 @@ from system.core.router import routes
     The automatically generated routes respond to all of the http verbs (GET, POST, PUT, PATCH, DELETE)
 """
 routes['default_controller'] = 'Blues'
+routes['/login'] = 'Blues#login'
 routes['POST']['/mentor_reg'] ='Blues#mreg'
 routes['POST']['/mentored_reg'] = 'Blues#mdreg'
 routes['POST']['/tell_mentor'] = 'Blues#tellmr'
