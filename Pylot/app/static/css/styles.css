@@ -1,3 +1,5 @@
-* {
-  font-family: monaco;
+
+.jumbotron {
+	background-image: url("../img/start.jpg");
+	background-repeat: none;
 }
