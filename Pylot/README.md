@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Pylot MVC (beta)
 Pylot MVC is a lightweight MVC framework built in Python leveraging flask.
 
@@ -30,7 +29,3 @@ python manage.py runserver
 ```
 
 Enjoy! More details/features coming soon!
-=======
-# huesofblue
-Our python group project
->>>>>>> a8d5c0b6e73d56d8d6c6d6242fa80123985d33ce
