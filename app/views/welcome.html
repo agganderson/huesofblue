@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name=" " content=" "/>
-<title>LOGIN/REGISTER</title>
+<title>WELCOME PAGE</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -14,7 +14,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+<link rel="stylesheet" href="styles.css"/>
 
 <script>
 $(document).ready(function(){
@@ -29,35 +29,31 @@ $(document).ready(function(){
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#">Hues of Blue</a>
 	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+	      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	      <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Register</a></li>
+
+
+	    </ul>
 	  </div>
 	</nav>
 	<!-- end navbar -->
 	<div class="container">
-		<!-- begin login form -->
-		<div class="row">
-			<div class="col-md-6">
-				<h2 class="text-info">Login</h2>
-				 <form role="form">
-				  <div class="form-group">
-				    <label class="text-info">Email address:</label>
-				    <input type="email" class="form-control" id="email">
-				  </div>
-				  <div class="form-group">
-				    <label class="text-info">Password:</label>
-				    <input type="password" class="form-control" id="pwd">
-				  </div>
-				  <a href="#"><button type="submit" class="btn btn-primary">Login</button></a>
-				</form>
-			</div>
+		<!-- begin jumbotron image -->
+		<div class="jumbotron">
+			<h1>I'm thinking a picture here?</h1>
+			<p class="text-info">and then a quote in the picture?</p>
 		</div>
-		<!-- end login form -->
-		<hr>
-		<hr>
-				<a href="#"><button type="submit" class="btn btn-primary">Register as a Mentor</button></a>
-				<a href="#"><button type="submit" class="btn btn-primary">Register as a Mentee</button></a>
-			</div>
-			<!-- end register form -->
+		<!-- end jumbtron image -->
+
+		<!-- begin jumbotron image -->
+		<div class="jumbotron">
+			<h1>Another picture here?</h1>
+			<p class="text-info">and then a quote in the picture?</p>
 		</div>
+		<!-- end jumbtron image -->
 	</div>
 </body>
 </html>

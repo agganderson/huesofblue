@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Mentee</title>
+	<title>Private</title>
 	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -10,9 +10,6 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
-
 </head>
 <body>
 		<nav class="navbar navbar-inverse">
@@ -21,15 +18,15 @@
       			<a class="navbar-brand" href="#">Different Hues of Blue</a>
     		</div>
     		<ul class="nav navbar-nav navbar-right">
-		      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>	      
-		      <li><a href="#"><span class="glyphicon glyphicon-logout"></span> Logout</a></li>
+      			<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
    			</ul>
   			</div>
 		</nav>
 		<div class="container">
 			<div class ="aboutme col-md-8 col-md-offset-2">
 				<div class = "row">
+					<img src="http://learn.codingdojo.com/assets/profile_pic.png" width="200px" height="200px">
 					<div class = "prof_info" style="display: inline-block">
 						<h2 style ="display: inline-block">About Me</h2>
 						<p>Name: </p>
@@ -37,7 +34,17 @@
 					</div>
 				</div>
 			</div>
+			<div class ="topics col-md-8 col-md-offset-2">
 
+				<h3>Helping with</h3>
+				<button  class="btn btn-default"> Edit</button>
+				<ul>
+					<li>ISSUES1</li>
+					<li>ISSUES2</li>
+					<li>ISSUES3</li>
+					<li>ISSUES4</li>
+				</ul>
+			</div>
 		<div class ="connections col-md-8 col-md-offset-2">
 			<h3>Connections</h3>
 			<table class="table table-striped">
@@ -69,14 +76,14 @@
 			  </table>
 		</div>
 		<div class ="requests col-md-8 col-md-offset-2">
-			<h3>Requested Connections</h3>
+			<h3>Requested Support</h3>
 			<table class="table table-striped">
 	    		<thead>
 	      		<tr>
 			       	<th>First name</th>
 			        <th>Last name</th>
 			        <th>Profile</th>
-			       
+			        <th colspan = "2">Actions</th>
 	     	 	</tr>
 	    		</thead>
 	    		<tbody>
@@ -84,19 +91,23 @@
 			        <td>John</td>
 			        <td>Doe</td>
 			        <td><a href="">LINK</a></td>
-			   
+			        <td><a href="">Approve</a></td>
+			        <td><a href="">Decline</a></td>
+
 			      </tr>
 			      <tr>
 			        <td>Mary</td>
 			        <td>Moe</td>
 			        <td><a href="">LINK</a></td>
-			       
+			        <td><a href="">Approve</a></td>
+			        <td><a href="">Decline</a></td>
 			      </tr>
 			      <tr>
 			        <td>July</td>
 			        <td>Dooley</td>
 			        <td><a href="">LINK</a></td>
-
+			        <td><a href="">Approve</a></td>
+			        <td><a href="">Decline</a></td>
 			      </tr>
 			    </tbody>
 			  </table>
