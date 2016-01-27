@@ -18,8 +18,8 @@ from system.core.router import routes
 """
 routes['default_controller'] = 'Blues'
 routes['/login'] = 'Blues#login'
-routes['POST']['/mentor_reg'] ='Blues#mreg'
-routes['POST']['/mentored_reg'] = 'Blues#mdreg'
+routes['GET']['/mentor_reg'] ='Blues#mentor_reg'
+routes['GET']['/mentored_reg'] = 'Blues#mentored_reg'
 routes['POST']['/tell_mentor'] = 'Blues#tellmr'
 routes['POST']['/tell_mentored'] = 'Blues#tellmd'
 routes['GET']['/dashboard'] = 'Blues#dash'
