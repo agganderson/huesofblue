@@ -1,0 +1,15 @@
+*{
+
+}
+#filters{
+	vertical-align: top;
+	width: 200px;
+}
+
+div{
+	display: inline-block;
+}
+#counselor_list{
+	border-left	: 10px solid blue;
+	padding: 2px;
+}
