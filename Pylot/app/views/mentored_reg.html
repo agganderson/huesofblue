@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name=" " content=" "/>
-<title>REGISTER</title>
+<title>MENTORED REGISTER</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -28,8 +28,7 @@ $(document).ready(function(){
 	      <a class="navbar-brand" href="#">Hues of Blue</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-	      <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 	    </ul>
 	  </div>
 	</nav>
@@ -53,19 +52,58 @@ $(document).ready(function(){
 				      <input type="text" class="form-control" id="last_name" placeholder="last_name" name="last_name">
 				    </div>
 				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-8">
-				      <div class="checkbox">
-				        <label class="text-info"><input type="checkbox">Mentor</label>
-				        <label class="text-info"><input type="checkbox">Client</label>
-				      </div>
+			  	  <div class="form-group">
+				    <label class="control-label col-sm-3 text-info">Email:</label>
+				    <div class="col-sm-8">
+				      <input type="email" class="form-control" id="email" placeholder="email" name="email">
 				    </div>
 				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
-				      <button type="submit" class="btn btn-primary">Submit</button>
+			  	  <div class="form-group">
+				    <label class="control-label col-sm-3 text-info">Password:</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="password" placeholder="password" name="password">
 				    </div>
 				  </div>
+			  	  <div class="form-group">
+				    <label class="control-label col-sm-3 text-info">Confirm Password:</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="confirm_password" placeholder="confirm_password" name="confirm_password">
+				    </div>
+				  </div>
+			  	  <div class="form-group text-left">
+				    <label class="control-label col-sm-3 text-info">Concerns:</label>
+				    <br>
+					 <div class="checkbox">
+					  <label><input type="checkbox" value="">Anxiety</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="">Depression</label>
+					</div>
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Stress</label>
+					</div>
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Substance Abuse</label>
+					</div>					
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Eating Disorders</label>
+					</div>					
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Eating Disorders</label>
+					</div>					
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Self-esteem</label>
+					</div>					
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Relationships</label>
+					</div>					
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>Loss</label>
+					</div>
+					<div class="checkbox disabled">
+					  <label><input type="checkbox" value="" disabled>General Suppor/Other</label>
+					</div>
+				  </div> 
 				</form>
 			</div>
 		</div>
