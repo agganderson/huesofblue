@@ -56,7 +56,8 @@ DROP TABLE IF EXISTS `connections`;
 CREATE TABLE `connections` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mentors_id` int(11) NOT NULL,
-  `mentored_id` varchar(45) NOT NULL,
+  `mentored_id` int(11) NOT NULL,
+  `status` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_mentored_has_mentors_mentors1_idx` (`mentors_id`),
   KEY `fk_mentored_has_mentors_mentored_idx` (`id`),
@@ -90,7 +91,7 @@ CREATE TABLE `mentored` (
   `user_level` varchar(45) DEFAULT NULL,
   `bio` varchar(45) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
+  `zip_code` varchar(45) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
@@ -123,7 +124,7 @@ CREATE TABLE `mentors` (
   `last_name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
-  `phone` varchar(45) DEFAULT NULL,
+  `zip_code` varchar(45) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
   `bio` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
@@ -149,4 +150,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-26 16:32:37
+-- Dump completed on 2016-01-26 17:39:11
