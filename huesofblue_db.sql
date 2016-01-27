@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `huesofblue` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `huesofblue`;
 -- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: huesofblue
@@ -52,12 +54,13 @@ DROP TABLE IF EXISTS `connections`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `connections` (
-  `mentored_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mentors_id` int(11) NOT NULL,
-  PRIMARY KEY (`mentored_id`,`mentors_id`),
+  `mentored_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_mentored_has_mentors_mentors1_idx` (`mentors_id`),
-  KEY `fk_mentored_has_mentors_mentored_idx` (`mentored_id`),
-  CONSTRAINT `fk_mentored_has_mentors_mentored` FOREIGN KEY (`mentored_id`) REFERENCES `mentored` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `fk_mentored_has_mentors_mentored_idx` (`id`),
+  CONSTRAINT `fk_mentored_has_mentors_mentored` FOREIGN KEY (`id`) REFERENCES `mentored` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_mentored_has_mentors_mentors1` FOREIGN KEY (`mentors_id`) REFERENCES `mentors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -146,4 +149,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-26 15:32:55
+-- Dump completed on 2016-01-26 16:32:37
