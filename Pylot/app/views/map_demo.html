@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+
+        var myLatLng = {lat: 37.339833, lng: -121.883881};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+
+        // this is the info window
+        var contentString = '<div id="content">'+ //container
+          '<div id="siteNotice">'+ //second div
+          '</div>'+ 
+          '<h1 id="firstHeading" class="firstHeading">Mentors</h1>'+
+          '<div id="bodyContent">'+
+          '<p>THIS IS A TEST</p>'+
+          '</div>'+
+          '</div>'; //first div
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+    async defer></script>
+
+  </body>
+</html>
