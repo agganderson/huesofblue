@@ -57,11 +57,13 @@
 			</form>
 		</div>
 		<div id='counselor_list'>
-			{% for counselor in counselors %}
-				<h4>Counselors Name: {{counselors['first_name']}}{{counselors['last_name']}}</h3>
-				<h5><b>Issues this counselor can help you with: {{counselor['issues']}}<b></h5>
-				<h5><b>Description: {{counselor['description']}}<b></h5>
-				<h5><b>Preferred Method of Interaction: {{counselor['interaction']}}<b></h5>
+			{% for user in user_info %}
+				<h3>Mentor Name: {{user['first_name']}} {{user['last_name']}}</h3>
+				<h4>Issues this counselor can help you with: {{user['issues']}}</h4>
+				<h4>Bio:</h4>
+				<p>{{user['bio']}}</p>
+				<h4>Why this person can help you:</h4>
+				<p>{{user['form_q1']}}</p>
 				<button type="button" class="btn btn-primary btn-lg">Connect</button>
 			{% endfor %}
 		</div>

@@ -25,6 +25,7 @@ class Blues(Controller):
       else:
         return redirect('/dashboard')
 
+
   def user_reg(self):
       return self.load_view('mentor_reg.html')
 
@@ -56,7 +57,7 @@ class Blues(Controller):
       if 'depression' in concern_forms['concerns']:
         concern_info['depression'] = True
       else:
-        concern_info['despression'] = False
+        concern_info['depression'] = False
       
       if 'stress' in concern_forms['concerns']:
         concern_info['stress'] = True
@@ -93,17 +94,17 @@ class Blues(Controller):
       else:
         concern_info['other'] = False 
 
-      print concern_info
+      
+      print session
       
 
       
-      if self.models['Blue'].is_first_record():
-        user_info['user_level'] = 'admin'
-      else:
-        user_info['user_level'] = 'user'
+      # if self.models['Blue'].is_first_record():
+      #   user_info['user_level'] = 'admin'
+      # else:
+      #   user_info['user_level'] = 'user'
       create_status = self.models['Blue'].create_user(user_info, concern_info)
       if create_status['status'] == True:
-        session['id'] = create_status['user']['id']
         return redirect('/login')
       else:
         for message in create_status['errors']:
@@ -111,8 +112,9 @@ class Blues(Controller):
         return redirect('/user_reg')
 
   def dash(self):
-      return self.load_view('dashboard.html')
+      user_info = self.models['Blue'].get_all_mentors()
+      return self.load_view('dashboard.html', user_info=user_info)
 
   def logout(self):
       session.clear()
-      return redirect('/')
+      return redirect('/login')
