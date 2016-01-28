@@ -41,54 +41,67 @@ class Blues(Controller):
         'bio' : request.form['bio'],
         'mentor' : request.form['mentor']
       }
-      
-      concern_info = {
-        'concern' : request.form.getlist('concerns')
-      }
-      if 'anxiety' in 'concerns':
-        concern_info = {anxiety : True}
-      else:
-        concern_info = {anxiety : False}
-      if 'depression' in 'concerns':
-        concern_info = {depression : True}
-      else:
-        concern_info = {despression : False}
-      if 'stress' in 'concerns':
-        concern_info = {stress : True}
-      else:
-        concern_info = {stress : False} 
-      if 'substance_abuse' in 'concerns':
-        concern_info = {substance_abuse : True}
-      else:
-        concern_info = {substance_abuse : False}
-      if 'eating_disorders' in 'concerns':
-        concern_info = {eating_disorders : True}
-      else:
-        concern_info = {eating_disorders : False} 
-      if 'self_esteem' in 'concerns':
-        concern_info = {self_esteem : True}
-      else:
-        concern_info = {self_esteem : False} 
-      if 'relationships' in 'concerns':
-        concern_info = {relationships : True}
-      else:
-        concern_info = {relationships : False} 
-      if 'grief' in 'concerns':
-        concern_info = {grief : True}
-      else:
-        concern_info = {grief : False} 
-      if 'other' in 'concerns':
-        concern_info = {other : True}
-      else:
-        concern_info = {other : False} 
+      print user_info
 
+      concern_forms = {
+        'concerns' : request.form.getlist('concerns')
+      }
+
+      concern_info = {}
+      if 'anxiety' in concern_forms['concerns']:
+        concern_info['anxiety'] = True
+      else:
+        concern_info['anxiety'] = False
+      
+      if 'depression' in concern_forms['concerns']:
+        concern_info['depression'] = True
+      else:
+        concern_info['despression'] = False
+      
+      if 'stress' in concern_forms['concerns']:
+        concern_info['stress'] = True
+      else:
+        concern_info['stress'] = False
+      
+      if 'substance_abuse' in concern_forms['concerns']:
+        concern_info['substance_abuse'] = True
+      else:
+        concern_info['substance_abuse'] = False
+      
+      if 'eating_disorders' in concern_forms['concerns']:
+        concern_info['eating_disorders'] = True
+      else:
+        concern_info['eating_disorders'] = False
+      
+      if 'self_esteem' in concern_forms['concerns']:
+        concern_info['self_esteem'] = True
+      else:
+        concern_info['self_esteem'] = False 
+      
+      if 'relationships' in concern_forms['concerns']:
+        concern_info['relationships'] = True
+      else:
+        concern_info['relationships'] = False 
+      
+      if 'grief' in concern_forms['concerns']:
+        concern_info['grief'] = True
+      else:
+        concern_info['grief'] = False 
+      
+      if 'other' in concern_forms['concerns']:
+        concern_info['other'] = True
+      else:
+        concern_info['other'] = False 
 
       print concern_info
+      
+
+      
       if self.models['Blue'].is_first_record():
         user_info['user_level'] = 'admin'
       else:
         user_info['user_level'] = 'user'
-      create_status = self.models['Blue'].create_user(user_info)
+      create_status = self.models['Blue'].create_user(user_info, concern_info)
       if create_status['status'] == True:
         session['id'] = create_status['user']['id']
         return redirect('/login')

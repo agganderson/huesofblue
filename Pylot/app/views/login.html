@@ -35,21 +35,28 @@ $(document).ready(function(){
 	  </div>
 	</nav>
 	<!-- end navbar -->
+	{% with messages = get_flashed_messages() %}
+           {% if messages %}
+             {% for message in messages %}
+               <p>{{message}}</p>
+             {% endfor %}
+           {% endif %}
+    {% endwith %}
 	<div class="container">
 		<!-- begin login form -->
 		<div class="row">
 			<div class="col-md-6">
 				<h2 class="text-info">Login</h2>
-				 <form role="form">
+				 <form action='/signin' method='POST' role="form">
 				  <div class="form-group">
 				    <label class="text-info">Username:</label>
-				    <input type="username" class="form-control" id="username">
+				    <input type="text" name='username' class="form-control">
 				  </div>
 				  <div class="form-group">
 				    <label class="text-info">Password:</label>
-				    <input type="password" class="form-control" id="pwd">
+				    <input type="text" name='password' class="form-control">
 				  </div>
-				  <a href="#"><button type="submit" class="btn btn-primary">Login</button></a>
+				  <button type="submit" class="btn btn-primary">Login</button>
 				</form>
 			</div>
 		</div>

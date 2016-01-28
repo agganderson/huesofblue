@@ -18,6 +18,7 @@ from system.core.router import routes
 """
 routes['default_controller'] = 'Blues'
 routes['/login'] = 'Blues#login'
+routes['POST']['/signin'] = 'Blues#signin'
 routes['GET']['/user_reg'] = 'Blues#user_reg'
 routes['POST']['/user_create'] = 'Blues#user_create'
 routes['GET']['/dashboard'] = 'Blues#dash'
