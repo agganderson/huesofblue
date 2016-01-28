@@ -15,7 +15,7 @@ class Blue(Model):
             return False
 
     def create_user(self, user_info, concern_info):
-
+        print concern_info, "sdfs"
     	EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
 
@@ -34,9 +34,9 @@ class Blue(Model):
         if not user_info['last_name']:
             errors.append('Last name cannot be empty')
         if len(user_info['zip_code'])!=5:
-        	error.append('Zip code must be 5 characters long')
+        	errors.append('Zip code must be 5 characters long')
         if not (user_info['zip_code']).isdigit():
-        	error.append('Zip code can only contain numeric values')     	
+        	errors.append('Zip code can only contain numeric values')     	
         if not user_info['email']:
             errors.append('Email field cannot be empty')
         if not EMAIL_REGEX.match(user_info['email']):
@@ -76,8 +76,7 @@ class Blue(Model):
 
             get_user = "SELECT * FROM users ORDER BY id DESC LIMIT 1"
             user = self.db.query_db(get_user)
-            return {'status' : True , 'user' : user[0]}
-
+            print concern_info, "printed"
             concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
             data= [
                 concern_info['anxiety'],
@@ -88,9 +87,10 @@ class Blue(Model):
                 concern_info['relationships'],
                 concern_info['grief'],
                 concern_info['other'],
-                session['id']
+                user[0]['id']
             ]
             self.db.query_db(concern_query, data)
+            return {'status' : True , 'user' : user[0]}
 
     def signin(self, user_info):
     	errors=[]
@@ -117,23 +117,14 @@ class Blue(Model):
     			errors.append('Username was not found')
     			return {'status': False, 'errors': errors}
 
-    # def disp_mentors(self):
-
-    #     select_mentor= "SELECT * FROM users WHERE mentor="yes""
-    #     user= self.db.query_db(query, data)
+    def get_all_users(self):
+        return self.db.query_db("SELECT * FROM users")
 
 
     def disp_mentored(self):
 
         select_mentored= "SELECT * FROM users WHERE mentor IS NULL"
         return self.db.query_db(select_mentored)
-
-
-    # def disp_connections(self):
-
-    # def map(self):
-    #     select_zip= "SELECT zip_code FROM user WHERE users_id=%s"
-    #     user= self.db.query_db(query, data)
 
     def disp_connections(self, user_info):
 
