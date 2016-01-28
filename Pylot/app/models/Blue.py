@@ -92,11 +92,6 @@ class Blue(Model):
             ]
             self.db.query_db(concern_query, data)
 
-
-
-
-   
-
     def signin(self, user_info):
     	errors=[]
     	if not user_info['username']:
@@ -121,6 +116,23 @@ class Blue(Model):
     		else:
     			errors.append('Username was not found')
     			return {'status': False, 'errors': errors}
+
+    def disp_mentors(self):
+
+        select_mentor= "SELECT * FROM users WHERE mentor="TRUE""
+        user= self.db.query_db(query, data)
+
+    def disp_mentored(self):
+
+        select_mentored= "SELECT * FROM users WHERE mentor IS NULL"
+        user= self.db.query_db(query, data)
+
+    def disp_connections(self):
+
+    def map(self):
+        select_zip= "SELECT zip_code FROM user WHERE users_id=%s"
+        user= self.db.query_db(query, data)
+
 
 
 

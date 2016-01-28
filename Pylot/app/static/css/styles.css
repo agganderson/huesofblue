@@ -19,6 +19,15 @@
 	color: white;
 }
 
+
+.box {
+	margin-left: 100px;
+}
+
+	.box p {
+		margin-left: 20px;
+	}
+
 .background {
 	background: url("../img/sunset.jpg");
 	background-size: 1000px 300px;
@@ -61,6 +70,5 @@
 }
 
 
-/*THIS IS TO TEST*/
 
 
