@@ -7,16 +7,47 @@ class Blues(Controller):
        self.load_model('Blue')
 
   def index(self):
-       return self.load_view('welcome.html')
+      return self.load_view('welcome.html')
        
   def login(self):
-       return self.load_view('login.html')
+      return self.load_view('login.html')
 
-  def mentor_reg(self):
-       return self.load_view('mentor_reg.html')
+  def signin(self):
+      signin_info = {
+        'username' : request.form['username'],
+        'password' : request.form['password']
+      }
+      status = self.models['Blue'].signin(signin_info)
+      if status['status'] == False:
+        for message in status['errors']:
+          flash(message, 'login_errors')
+        return redirect('/login')
+      else:
+        return redirect('/dashboard')
 
-  def mentored_reg(self):
-       return self.load_view('mentored_reg.html')
+  def user_reg(self):
+      return self.load_view('mentor_reg.html')
+
+  def user_create(self):
+      user_details = {
+        'first_name' : request.form['first_name'],
+        'last_name' : request.form['last_name'],
+        'email' : request.form['email'],
+        'zip_code' : request.form['zip_code'],
+        'username' : request.form['username'],
+        'password' : request.form['password'],
+        'confirm_password' : request.form['confirm_password'],
+        'form_q1' : request.form['form_q1'],
+        'bio' : request.form['bio']
+      }
+      create_status = self.models['Blue'].create_user(user_details)
+      if create_status['status'] == True:
+        session['id'] = create_status['user']['id']
+        return redirect('/login')
+      else:
+        for message in create_status['errors']:
+          flash(message, 'reg_errors')
+        return redirect('/login')
 
   def dash(self):
       return self.load_view('dashboard.html')
