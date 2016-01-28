@@ -19,13 +19,14 @@
 	color: white;
 }
 
+
 .box {
-/*	display: inline-block;
-/*border: solid black 5px;*/
-	margin-left: 150px;
-/*	height: 200px;
-	width: 200px;
-*/}
+	margin-left: 100px;
+}
+
+	.box p {
+		margin-left: 20px;
+	}
 
 .background {
 	background: url("../img/sunset.jpg");
@@ -69,6 +70,5 @@
 }
 
 
-/*THIS IS TO TEST*/
 
 
