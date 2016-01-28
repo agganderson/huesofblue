@@ -6,9 +6,7 @@ class Blue(Model):
     def __init__(self):
         super(Blue, self).__init__()
 
-<<<<<<< HEAD
-    def create_user(self, user_info, concern_info):
-=======
+
     def is_first_record(self):
         get_user_query = 'SELECT * FROM users ORDER BY id DESC LIMIT 1'
         if self.db.query_db(get_user_query) == []:
@@ -16,8 +14,8 @@ class Blue(Model):
         else:
             return False
 
-    def create_user(self, user_info):
->>>>>>> 30a1874f03b5647a2d78377b28f572ec42251156
+    def create_user(self, user_info, concern_info):
+
     	EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
 
@@ -76,18 +74,23 @@ class Blue(Model):
             ]
             self.db.query_db(query,data)
 
-
-            concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            data= [concern_info['anxiety'], concern_info['depression'],concern_info['stress'],concern_info['substance_abuse'],concern_info['eating_disorders'],concern_info['relationships'],concern_info['grief'], concern_info['other']]
-
-
-
             get_user = "Select * From users Order By id DESC LIMIT 1"
             user = self.db.query_db(get_user)
             return {'status' : True , 'user' : user[0]}
 
-
-   
+            concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            data= [
+                concern_info['anxiety'],
+                concern_info['depression'],
+                concern_info['stress'],
+                concern_info['substance_abuse'],
+                concern_info['eating_disorders'],
+                concern_info['relationships'],
+                concern_info['grief'],
+                concern_info['other'],
+                session['id']
+            ]
+            self.db.query_db(concern_query, data)
 
     def signin(self, user_info):
     	errors=[]
@@ -100,9 +103,9 @@ class Blue(Model):
     	if errors:
     		return {'status': False, 'errors': errors}
     	else:
-    		select_user = "SELECT * FROM users WHERE username = %s LIMIT 1"
+    		select_user_query = "SELECT * FROM users WHERE username = %s LIMIT 1"
     		data = [user_info['username']]
-    		user= self.db.query_db(query, data)
+    		user= self.db.query_db(select_user_query, data)
 
     		if len(user) > 0:
     			if self.bcrypt.check_password_hash(user[0]['password'], user_info['password']):
