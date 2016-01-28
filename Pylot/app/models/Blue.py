@@ -78,7 +78,7 @@ class Blue(Model):
 
 
             concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            data= [concern_info['anxiety'], concern_info['anxiety'], concern_info['depression'],concern_info['stress'],concern_info['substance_abuse'],concern_info['eating_disorders'],concern_info['relationships'],concern_info['grief'], concern_info['other']]
+            data= [concern_info['anxiety'], concern_info['depression'],concern_info['stress'],concern_info['substance_abuse'],concern_info['eating_disorders'],concern_info['relationships'],concern_info['grief'], concern_info['other']]
 
 
 
@@ -113,6 +113,23 @@ class Blue(Model):
     		else:
     			errors.append('Username was not found')
     			return {'status': False, 'errors': errors}
+
+    def disp_mentors(self):
+
+        select_mentor= "SELECT * FROM users WHERE mentor="TRUE""
+        user= self.db.query_db(query, data)
+
+    def disp_mentored(self):
+
+        select_mentored= "SELECT * FROM users WHERE mentor IS NULL"
+        user= self.db.query_db(query, data)
+
+    def disp_connections(self):
+
+    def map(self):
+        select_zip= "SELECT zip_code FROM user WHERE users_id=%s"
+        user= self.db.query_db(query, data)
+
 
 
 
