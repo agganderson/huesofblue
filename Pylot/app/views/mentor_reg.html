@@ -35,6 +35,13 @@ $(document).ready(function(){
 	</nav>
 	<!-- end navbar -->
 	<div class="container">
+		{% with messages = get_flashed_messages() %}
+           {% if messages %}
+             {% for message in messages %}
+               <p>{{message}}</p>
+             {% endfor %}
+           {% endif %}
+        {% endwith %}
 		<!-- begin register input -->
 		<div class="row text-center">
 			<div class="col-md-6">
@@ -131,6 +138,9 @@ $(document).ready(function(){
     					<br>
     					<br>	
   					</div>
+  					<label>
+      				<input type="checkbox" value='mentor'><b>Do you want to be a mentor?<b>
+      				</label>
   					<button type="submit" class="btn btn-primary">Register</button>
   				</div>
 				</form>

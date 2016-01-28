@@ -14,47 +14,40 @@ class Blues(Controller):
 
   def signin(self):
       signin_info = {
-      'username' : request.form['username']
-      'password' : request.form['password']
+        'username' : request.form['username'],
+        'password' : request.form['password']
       }
       status = self.models['Blue'].signin(signin_info)
+      if status['status'] == False:
+        for message in status['errors']:
+          flash(message, 'login_errors')
+        return redirect('/login')
+      else:
+        return redirect('/dashboard')
 
-  def mentor_reg(self):
+  def user_reg(self):
       return self.load_view('mentor_reg.html')
 
-  def mentor_create(self):
-      mentor_details = {
-        'first_name': request.form['first_name']
-        'last_name': request.form['last_name']
-        'email': request.form['email']
-        'zipcode': request.form['zip_code']
-        'username': request.form['username']
-        'password': request.form['passwod']
-        'confirm_password': request.form['confirm_password']
-        'form_q1': request.form['form_q1']
-        'form_q2': request.form['form_q1']
-        'bio': request.form['bio']
-      }
-      create_status = self.models['Blue'].create_mentor(mentor_details)
-      return redirect('/login')
-
-  def mentored_reg(self):
-      return self.load_view('mentored_reg.html')
-  
-  def mentored_create(self):
-      mentored_details = {
-        'first_name' : request.form['first_name']
-        'last_name' : request.form['last_name']
-        'email' : request.form['email']
-        'zipcode' : request.form['zip_code']
-        'username' : request.form['username']
-        'password' : request.form['passwod']
-        'confirm_password' : request.form['confirm_password']
-        'form_q1' : request.form['form_q1']
+  def user_create(self):
+      user_details = {
+        'first_name' : request.form['first_name'],
+        'last_name' : request.form['last_name'],
+        'email' : request.form['email'],
+        'zip_code' : request.form['zip_code'],
+        'username' : request.form['username'],
+        'password' : request.form['password'],
+        'confirm_password' : request.form['confirm_password'],
+        'form_q1' : request.form['form_q1'],
         'bio' : request.form['bio']
       }
-      create_status = self.models['Blue'].create_mentored(mentored_details)
-      return redirect('/login')
+      create_status = self.models['Blue'].create_user(user_details)
+      if create_status['status'] == True:
+        session['id'] = create_status['user']['id']
+        return redirect('/login')
+      else:
+        for message in create_status['errors']:
+          flash(message, 'reg_errors')
+        return redirect('/login')
 
   def dash(self):
       return self.load_view('dashboard.html')
