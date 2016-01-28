@@ -112,10 +112,9 @@ class Blues(Controller):
         return redirect('/user_reg')
 
   def dash(self):
-      user_info = self.models['Blue'].get_all_users()
-      return self.load_view('dashboard.html')
-      print user_info
+      user_info = self.models['Blue'].get_all_mentors()
+      return self.load_view('dashboard.html', user_info=user_info)
 
   def logout(self):
       session.clear()
-      return redirect('/')
+      return redirect('/login')

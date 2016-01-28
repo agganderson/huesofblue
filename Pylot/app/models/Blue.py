@@ -117,8 +117,8 @@ class Blue(Model):
     			errors.append('Username was not found')
     			return {'status': False, 'errors': errors}
 
-    def get_all_users(self):
-        return self.db.query_db("SELECT * FROM users")
+    def get_all_mentors(self):
+        return self.db.query_db("SELECT * FROM users WHERE mentor = 'Yes'")
 
 
     def disp_mentored(self):
