@@ -6,7 +6,7 @@ class Blue(Model):
     def __init__(self):
         super(Blue, self).__init__()
 
-    def create_user(self, user_info):
+    def create_user(self, user_info, concern_info):
     	EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
 
@@ -55,6 +55,10 @@ class Blue(Model):
             data = [user_info['form_q1'], user_info['first_name'], user_info['last_name'], user_info['zip_code'], user_info['email'], user_info['username'], user_info['password'], user_info['bio'], user_info['mentor']  ]
 
             self.db.query_db(query,data)
+
+            concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            data= [concern_info['anxiety'], concern_info['anxiety'], concern_info['depression'],concern_info['stress'],concern_info['substance_abuse'],concern_info['eating_disorders'],concern_info['relationships'],concern_info['grief'], concern_info['other']]
+
 
             get_user = "Select * From users Order By id DESC LIMIT 1"
             user = self.db.query_db(get_user)
