@@ -1,0 +1,25 @@
+INSERT INTO users (form_q1, first_name, last_name, zip_code, email, username, password,bio, mentor, user_level, created_at, updated_at) VALUES (%s, %s,%s, %s, %s, %s, %s, %s,%s ,"nonadmin", NOW(), NOW())
+
+
+data = [user_info['form_q1'], user_info['first_name'], user_info['last_name'], user_info['zip_code'], user_info['email'], user_info['username'], user_info['password'], user_info['bio'], user_info['mentor']  ]
+##############
+SELECT * FROM users WHERE mentor = 'TRUE';
+
+SELECT * FROM users WHERE mentor = 'TRUE'  --> use this for showing all th mentors
+
+SELECT * FROM users WHERE mentor IS NULL  --> use this for showing all mentees/mentored
+
+#select particular user for logging
+select_user = "SELECT * FROM users WHERE username = %s LIMIT 1"
+       data = [user_info['username']]
+
+
+#create new connections
+query = INSERT INTO connections (users_id, users_id1, created_at, updated_at, status) VALUES (%s,%s, NOW(),NOW(), "connected")
+
+data = [user_info[‘user_id’],user_info[‘user_id’]]
+
+# SELECTS all the connections for a particular user, change users_id to that particular 
+query = SELECT first_name, username FROM users WHERE id IN (SELECT users_id1 FROM connections WHERE users_id = %s)
+data= [user_info[id]]
+
