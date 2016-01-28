@@ -94,13 +94,14 @@ class Blues(Controller):
         concern_info['other'] = False 
 
       print concern_info
+      print session
       
 
       
-      if self.models['Blue'].is_first_record():
-        user_info['user_level'] = 'admin'
-      else:
-        user_info['user_level'] = 'user'
+      # if self.models['Blue'].is_first_record():
+      #   user_info['user_level'] = 'admin'
+      # else:
+      #   user_info['user_level'] = 'user'
       create_status = self.models['Blue'].create_user(user_info, concern_info)
       if create_status['status'] == True:
         session['id'] = create_status['user']['id']

@@ -74,11 +74,11 @@ class Blue(Model):
             ]
             self.db.query_db(query,data)
 
-            get_user = "Select * From users Order By id DESC LIMIT 1"
+            get_user = "SELECT * FROM users ORDER BY id DESC LIMIT 1"
             user = self.db.query_db(get_user)
             return {'status' : True , 'user' : user[0]}
 
-            concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            concern_query= "INSERT INTO concerns(anxiety, depression, stress, substance_abuse, eating_disorders, relationships, grief, other, users_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
             data= [
                 concern_info['anxiety'],
                 concern_info['depression'],
@@ -117,21 +117,21 @@ class Blue(Model):
     			errors.append('Username was not found')
     			return {'status': False, 'errors': errors}
 
-    def disp_mentors(self):
+    # def disp_mentors(self):
 
-        select_mentor= "SELECT * FROM users WHERE mentor="TRUE""
-        user= self.db.query_db(query, data)
+    #     select_mentor= "SELECT * FROM users WHERE mentor="yes""
+    #     user= self.db.query_db(query, data)
 
     def disp_mentored(self):
 
         select_mentored= "SELECT * FROM users WHERE mentor IS NULL"
         user= self.db.query_db(query, data)
 
-    def disp_connections(self):
+    # def disp_connections(self):
 
-    def map(self):
-        select_zip= "SELECT zip_code FROM user WHERE users_id=%s"
-        user= self.db.query_db(query, data)
+    # def map(self):
+    #     select_zip= "SELECT zip_code FROM user WHERE users_id=%s"
+    #     user= self.db.query_db(query, data)
 
 
 
