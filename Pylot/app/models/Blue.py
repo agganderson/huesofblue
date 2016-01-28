@@ -122,16 +122,26 @@ class Blue(Model):
     #     select_mentor= "SELECT * FROM users WHERE mentor="yes""
     #     user= self.db.query_db(query, data)
 
+
     def disp_mentored(self):
 
         select_mentored= "SELECT * FROM users WHERE mentor IS NULL"
-        user= self.db.query_db(query, data)
+        return self.db.query_db(select_mentored)
+
 
     # def disp_connections(self):
 
     # def map(self):
     #     select_zip= "SELECT zip_code FROM user WHERE users_id=%s"
     #     user= self.db.query_db(query, data)
+
+    def disp_connections(self, user_info):
+
+        query = "SELECT first_name, username FROM users WHERE id IN (SELECT users_id1 FROM connections WHERE users_id = %s)"
+        data= [user_info[id]]
+        return self.db.query_db(query, data)
+
+
 
 
 
