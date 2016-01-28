@@ -45,6 +45,44 @@ class Blues(Controller):
       concern_info = {
         'concern' : request.form.getlist('concerns')
       }
+      if 'anxiety' in 'concerns':
+        concern_info = {anxiety : True}
+      else:
+        concern_info = {anxiety : False}
+      if 'depression' in 'concerns':
+        concern_info = {depression : True}
+      else:
+        concern_info = {despression : False}
+      if 'stress' in 'concerns':
+        concern_info = {stress : True}
+      else:
+        concern_info = {stress : False} 
+      if 'substance_abuse' in 'concerns':
+        concern_info = {substance_abuse : True}
+      else:
+        concern_info = {substance_abuse : False}
+      if 'eating_disorders' in 'concerns':
+        concern_info = {eating_disorders : True}
+      else:
+        concern_info = {eating_disorders : False} 
+      if 'self_esteem' in 'concerns':
+        concern_info = {self_esteem : True}
+      else:
+        concern_info = {self_esteem : False} 
+      if 'relationships' in 'concerns':
+        concern_info = {relationships : True}
+      else:
+        concern_info = {relationships : False} 
+      if 'grief' in 'concerns':
+        concern_info = {grief : True}
+      else:
+        concern_info = {grief : False} 
+      if 'other' in 'concerns':
+        concern_info = {other : True}
+      else:
+        concern_info = {other : False} 
+
+
       print concern_info
       if self.models['Blue'].is_first_record():
         user_info['user_level'] = 'admin'
