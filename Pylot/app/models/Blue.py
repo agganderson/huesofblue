@@ -6,6 +6,13 @@ class Blue(Model):
     def __init__(self):
         super(Blue, self).__init__()
 
+    def is_first_record(self):
+        get_user_query = 'SELECT * FROM users ORDER BY id DESC LIMIT 1'
+        if self.db.query_db(get_user_query) == []:
+            return True
+        else:
+            return False
+
     def create_user(self, user_info):
     	EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
@@ -38,7 +45,7 @@ class Blue(Model):
             errors.append('Bio cannot be empty')
         if not user_info['password']:
             errors.append('Password field cannot be empty')
-        if not user_info(['bio']):
+        if not user_info['bio']:
         	errors.append('Bio cannot be empty')
         if len(user_info['password']) < 5:
             errors.append('Password must be longer than 4 characters')
@@ -51,11 +58,19 @@ class Blue(Model):
             return {'status': False, 'errors' : errors}
         else:
             hashed_pw = self.bcrypt.generate_password_hash(user_info['password'])
-            query = "INSERT INTO users (form_q1, first_name, last_name, zip_code, email, username, password, bio, mentor, user_level, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,"nonadmin", NOW(), NOW())"
-            data = [user_info['form_q1'], user_info['first_name'], user_info['last_name'], user_info['zip_code'], user_info['email'], user_info['username'], user_info['password'], user_info['bio'], user_info['mentor']  ]
-
+            query = "INSERT INTO users (form_q1, first_name, last_name, zip_code, email, username, password, bio, mentor, user_level, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,'nonadmin', NOW(), NOW())"
+            data = [
+                user_info['form_q1'], 
+                user_info['first_name'], 
+                user_info['last_name'], 
+                user_info['zip_code'], 
+                user_info['email'], 
+                user_info['username'], 
+                hashed_pw, 
+                user_info['bio'], 
+                user_info['mentor']  
+            ]
             self.db.query_db(query,data)
-
             get_user = "Select * From users Order By id DESC LIMIT 1"
             user = self.db.query_db(get_user)
             return {'status' : True , 'user' : user[0]}

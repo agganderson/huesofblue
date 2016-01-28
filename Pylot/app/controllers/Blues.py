@@ -29,7 +29,7 @@ class Blues(Controller):
       return self.load_view('mentor_reg.html')
 
   def user_create(self):
-      user_details = {
+      user_info = {
         'first_name' : request.form['first_name'],
         'last_name' : request.form['last_name'],
         'email' : request.form['email'],
@@ -38,16 +38,26 @@ class Blues(Controller):
         'password' : request.form['password'],
         'confirm_password' : request.form['confirm_password'],
         'form_q1' : request.form['form_q1'],
-        'bio' : request.form['bio']
+        'bio' : request.form['bio'],
+        'mentor' : request.form['mentor']
       }
-      create_status = self.models['Blue'].create_user(user_details)
+      
+      concern_info = {
+        'concern' : request.form.getlist('concerns')
+      }
+      print concern_info
+      if self.models['Blue'].is_first_record():
+        user_info['user_level'] = 'admin'
+      else:
+        user_info['user_level'] = 'user'
+      create_status = self.models['Blue'].create_user(user_info)
       if create_status['status'] == True:
         session['id'] = create_status['user']['id']
         return redirect('/login')
       else:
         for message in create_status['errors']:
           flash(message, 'reg_errors')
-        return redirect('/login')
+        return redirect('/user_reg')
 
   def dash(self):
       return self.load_view('dashboard.html')

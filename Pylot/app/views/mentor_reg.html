@@ -47,7 +47,7 @@ $(document).ready(function(){
 			<div class="col-md-6">
 				<h2 class="text-info">Please enter your information:</h2>
 				<br>
-				<form class="form-horizontal" role="form">
+				<form action='/user_create' method='post'class="form-horizontal" role="form">
 					<div class="form-group">
 				    	<label class="control-label col-sm-3 text-info">First Name:</label>
 				    	<div class="col-sm-8">
@@ -98,50 +98,54 @@ $(document).ready(function(){
 						<textarea rows="4" cols="50" name='form_q2'></textarea>
 						<p class="text-info text-left">About me:</p>
 						<textarea rows="4" cols="50" name='bio'></textarea>		    
-					<h3 class="text-info text-left">What would you like help with?:</h3>
+					 <h3 class="text-info text-left">What would you like help with?:</h3>
 						<div class="checkbox">
     						<label>
-      						<input type="checkbox" value='anxiety'>Anxiety
+      						<input type="checkbox" name='concerns'  value='anxiety'>Anxiety
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='despression'>Depression
+      						<input type="checkbox" name='concerns' value='despression'>Depression
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='stress'>Stress
+      						<input type="checkbox" name='concerns' value='stress'>Stress
     						</label>
     					<br>		
     						<label>
-      						<input type="checkbox" value='substance_abuse'>Substance Abuse
+      						<input type="checkbox" name='concerns' value='substance_abuse'>Substance Abuse
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='eating_disorders'>Eating Disorders
+      						<input type="checkbox" name='concerns' value='eating_disorders'>Eating Disorders
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='self_esteem'>Self-Esteem
+      						<input type="checkbox" name='concerns' value='self_esteem'>Self-Esteem
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='relationships'>Relationships
+      						<input type="checkbox" name='concerns' value='relationships'>Relationships
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='grief'>Grief
+      						<input type="checkbox" name='concerns' value='grief'>Grief
     						</label>
     					<br>
     						<label>
-      						<input type="checkbox" value='general_support'>General Support / Other
+      						<input type="checkbox" name='concerns' value='general_support'>General Support / Other
     						</label>
     					<br>
     					<br>	
   					</div>
   					<label>
-      				<input type="checkbox" value='mentor'><b>Do you want to be a mentor?<b>
-      				</label>
+      				Would you like to be a mentor?</label>
+      				<select name='mentor'>
+      					<option>Yes</option>
+      					<option>No</option>
+      				</select>
   					<button type="submit" class="btn btn-primary">Register</button>
+
   				</div>
 				</form>
 			</div>
