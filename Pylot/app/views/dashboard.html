@@ -12,6 +12,7 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
 
 	<style>
@@ -72,95 +73,165 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc&callback=initMap"
     async defer></script>
+=======
+		<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+
+		<style>
+			html, body {
+			margin: 0;
+			padding: 0;
+			}
+
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript">
+
+			$(document).ready(function(){
+
+			window.initMap= function() {
+			$.get("https://maps.googleapis.com/maps/api/geocode/json?address=11372&key=KEY", function(res) {
+				latitude = res.results[0].geometry.location.lat;
+				longitude= res.results[0].geometry.location.lng;
+
+			var myLatLng = {lat: latitude, lng: longitude};
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 15,
+				center: myLatLng
+			});
+
+			var marker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				title: 'Hello World!'
+			});
+
+			// this is the info window
+			var contentString = '<div id="content">'+ //container
+				'<div id="siteNotice">'+ //second div
+				'</div>'+ 
+				'<h5 id="firstHeading" class="firstHeading">Mentors</h5>'+
+				'<div id="bodyContent">'+
+				'<p>this will be a list of all the mentors</p>'+
+				'</div>'+
+				'</div>'; //first div
+
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+
+			marker.addListener('click', function() {
+				infowindow.open(map, marker);
+				});
+					}, "json");
+				};
+			})
+		</script>
+
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap"
+		async defer></script>
+>>>>>>> 6a4b5c70ff25cc3305a22bd521175f626f7dc8ca
 	</head>	
 	<body>			
 		         	{% for mentor in session['mentors_in_zip'] %}
 		         		{{mentor['username']}}
    					{% endfor %}
 		<nav class="navbar navbar-inverse">
-	  		<div class="container-fluid">
-	    		<div class="navbar-header">
-	      		<a class="navbar-brand" href="/">Hues of Blue</a>
-	    		</div>
-	    		<ul class="nav navbar-nav navbar-right">
-	      			<li><a href="/dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-	      			<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-	   			</ul>
-	  		</div>
+			<div class="container-fluid">
+				<div class="navbar-header">
+				<a class="navbar-brand" href="/">Hues of Blue</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
 		</nav>
 
-		<div class="container">
-
-			<div class="welcome text-center">
-				<h3>Welcome {{session['username']}}</h3>
+		<div class='container'>
+			<div class = "welcome text-center">
+				<h3> Welcome {{session['username']}}</h3>
 			</div>
 
-			<div class="top">
+			<div class = "top">
 				<div id='filters'>				
-					<form action='/filter'>
-						<input type='checkbox' name='issue1' value='issue1'>
+					<form action='/filter' method="POST">
+						<input type='checkbox' name='issue' value='anxiety'>
 						<label>Anxiety</label>
-									<br>
-						<input type='checkbox' name='issue2' value='issue2'>
+						<br>
+						<input type='checkbox' name='issue' value='depression'>
 						<label>Depression</label>
-									<br>
-						<input type='checkbox' name='issue3' value='issue3'>
+						<br>
+						<input type='checkbox' name='issue' value='stress'>
 						<label>Stress</label>
-									<br>
-						<input type='checkbox' name='issue4' value='issue4'>
+						<br>
+						<input type='checkbox' name='issue' value='substance_abuse'>
 						<label>Substance Abuse</label>
-									<br>
-						<input type='checkbox' name='issue5' value='issue5'>
-						<label>Self-Esteem</label>
-									<br>
-						<input type='checkbox' name='issue6' value='issue6'>
+						<br>
+						<input type='checkbox' name='issue' value='eating_disorders'>
+						<label>Eating Disorders</label>
+						<br>
+						<input type='checkbox' name='issue' value='relationships'>
 						<label>Relationships</label>
-									<br>
-						<input type='checkbox' name='issue7' value='issue7'>
+						<br>
+						<input type='checkbox' name='issue' value='grief'>
 						<label>Grief</label>
-									<br>
-						<input type='checkbox' name='issue8' value='issue8'>
+						<br>
+						<input type='checkbox' name='issue' value='other'>
 						<label>General Support / Other</label>
-									<br>
+						<br>
 						<input type='submit' value='Filter' class='btn btn-primary'>
 					</form>
-
 				</div>
+<<<<<<< HEAD
+=======
+			<!-- 					<div class = "row">
+			</div> -->
+>>>>>>> 6a4b5c70ff25cc3305a22bd521175f626f7dc8ca
 
 				<div id="bio">
-						<h3>Name:  </h3>
-						<h4>{{ session['username'] }}</h4>
-						<h3>Concerns: </h3>
+					<h3>Name:  </h3>
+					<h4>{{ session['username'] }}</h4>
+					<h3>Concerns: </h3>
 						<ul>
 						{% for key, value in concern_info[0].iteritems() : %}
 							{% if value == '1' %}
-   								<li>{{ key }}</li>
-   							{% endif %}
-   						{% endfor %}
-   						</ul>			
-   						<h3>Bio: </h3>
-   						<h4> {{ session['bio'] }} </h4>
-   						<h3>Connections: </h3>
-   						<h4>CONNECTIONS HERES</h4>
+								<li>{{ key }}</li>
+							{% endif %}
+						{% endfor %}
+						</ul>			
+					<h3>Bio: </h3>
+					<h4> {{ session['bio'] }} </h4>
+					<h3>Connections: </h3>
+					<h4>CONNECTIONS HERE</h4>
 
-						<button type="button" class="btn btn-primary">Edit</button>
+					<button type="button" class="btn btn-primary">Edit</button>
 				</div>
+
 				<div id="map">
+<<<<<<< HEAD
 	    		</div>
 	    		
 	    	</div>
+=======
+				</div>
+			</div>
+>>>>>>> 6a4b5c70ff25cc3305a22bd521175f626f7dc8ca
 
-	    	<div class="bottom">
-				<div id='counselor_list'>
-					{% for user in user_info %}
-						<h3>Mentor Name: <a href="/profile/{{user['id']}}">{{user['username']}}</a></h3>
+			<div class="bottom">
+				<div id='counselor_list'>				
+					{% for filter in m_filter %}
+						<h3>Mentor Name: <a href="/profile/{{filter['users_id']}}">{{filter['username']}}</a></h3>
 						<h4>Bio:</h4>
-						<p>{{user['bio']}}</p>
+							<p>{{filter['bio']}}</p>
 						<h4>Why this person can help you:</h4>
-						<p>{{user['form_q1']}}</p>
+							<p>{{filter['form_q1']}}</p>
 					{% endfor %}
-				</div>	
-			</div>	
+					</div>		    
+				</div>
+			</div>
+
 		</div>
 	</body>
 </html>

@@ -119,10 +119,13 @@ class Blue(Model):
     def get_all_mentors(self):
         return self.db.query_db("SELECT * FROM users WHERE mentor = 'Yes'")
 
-    def get_mentor_by_id(self, mentor_id):
-        query = "SELECT * FROM users WHERE id = %s LIMIT 1"
-        data = [mentor_id] 
-        return self.db.query_db(query, data)
+    def get_mentor_by_id(self, id):
+        print id, "in sql"
+        query = "SELECT * FROM users WHERE id = "+id+" LIMIT 1"
+        print query
+        print self.db.query_db(query)
+ 
+        return self.db.query_db(query)
 
     def get_all_concerns(self,id):
         query = "SELECT * FROM concerns WHERE users_id = %s"
@@ -130,10 +133,8 @@ class Blue(Model):
         return self.db.query_db(query, data)
 
     def get_mentor_concerns(self, string):
-        query = "SELECT * FROM users LEFT JOIN concerns ON concerns.users_id = users.id WHERE users.mentor='Yes' HAVING %s"
-        data= string
-        return self.db.query_db(query, data)
-
+        query = "SELECT * FROM users LEFT JOIN concerns ON concerns.users_id = users.id WHERE users.mentor='Yes' HAVING " + string
+        return self.db.query_db(query)
 
     def disp_mentored(self):
 
