@@ -12,65 +12,72 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-		<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
 
-		<style>
-			html, body {
-			margin: 0;
-			padding: 0;
-			}
+	<style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
 
-		</style>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<script type="text/javascript">
+    </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <script type="text/javascript">
 
-			$(document).ready(function(){
+         $(document).ready(function(){
+ 
+     
+          
+          window.initMap= function() {
 
-			window.initMap= function() {
-			$.get("https://maps.googleapis.com/maps/api/geocode/json?address=11372&key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc", function(res) {
-				latitude = res.results[0].geometry.location.lat;
-				longitude= res.results[0].geometry.location.lng;
+            $.get("https://maps.googleapis.com/maps/api/geocode/json?address={{ session['current_zip_code'] }}&key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc", function(res) {
+                    latitude = res.results[0].geometry.location.lat;
+                    longitude= res.results[0].geometry.location.lng;
 
-			var myLatLng = {lat: latitude, lng: longitude};
+                    var myLatLng = {lat: latitude, lng: longitude};
 
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 15,
-				center: myLatLng
-			});
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15,
+                      center: myLatLng
+                    });
 
-			var marker = new google.maps.Marker({
-				position: myLatLng,
-				map: map,
-				title: 'Hello World!'
-			});
+                    var marker = new google.maps.Marker({
+                      position: myLatLng,
+                      map: map,
+                      title: 'Hello World!'
+                    });
 
-			// this is the info window
-			var contentString = '<div id="content">'+ //container
-				'<div id="siteNotice">'+ //second div
-				'</div>'+ 
-				'<h5 id="firstHeading" class="firstHeading">Mentors</h5>'+
-				'<div id="bodyContent">'+
-				'<p>this will be a list of all the mentors</p>'+
-				'</div>'+
-				'</div>'; //first div
+                    // this is the info window
+                    var contentString = '<div id="content">'+ //container
+                      '<div id="siteNotice">'+ //second div
+                      '</div>'+ 
+                      '<h5 id="firstHeading" class="firstHeading">Mentors</h5>'+
+                      '<div id="bodyContent">'+
+                      "<p>{{session['list_of_mentors']}}</p>"+
+                      '</div>'+
+                      '</div>'; //first div
 
-			var infowindow = new google.maps.InfoWindow({
-				content: contentString
-			});
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
 
-			marker.addListener('click', function() {
-				infowindow.open(map, marker);
-				});
-					}, "json");
-				};
-			})
-		</script>
+                  marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                  });
+            	}, "json");
+                };
+      })
+    </script>
 
 
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc&callback=initMap"
-		async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc&callback=initMap"
+    async defer></script>
+
 	</head>	
-	<body>
+	<body>			
+		         	{% for mentor in session['mentors_in_zip'] %}
+		         		{{mentor['username']}}
+   					{% endfor %}
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -118,8 +125,7 @@
 						<input type='submit' value='Filter' class='btn btn-primary'>
 					</form>
 				</div>
-			<!-- 					<div class = "row">
-			</div> -->
+
 
 				<div id="bio">
 					<h3>Name:  </h3>
@@ -146,6 +152,7 @@
 				</div>
 
 				<div id="map">
+
 				</div>
 			</div>
 

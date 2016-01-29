@@ -147,6 +147,7 @@ class Blue(Model):
         data= [connection_info]
         return self.db.query_db(query, data)
 
+
     def make_connections(self, mentor_id, current_user):
         query = "INSERT INTO connections (users_id, users_id1, created_at, updated_at, status) VALUES (%s,%s, NOW(),NOW(), 'connected')"
     
@@ -156,6 +157,13 @@ class Blue(Model):
             ]
         print data
         return self.db.query_db(query, data)
+
+    def get_all_zip(self, zip_code):
+        query = "SELECT * FROM users WHERE mentor='Yes' AND zip_code=%s"
+        data = [zip_code]
+        return self.db.query_db(query, data)
+
+
 
 
 

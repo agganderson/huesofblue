@@ -94,6 +94,7 @@
 		border: solid black 2px;
 		width: 380px;
 		overflow: scroll;
+		height: 500px;
 	}
 
 .welcome {
