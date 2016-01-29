@@ -146,6 +146,11 @@ class Blue(Model):
         data= [user_info[id]]
         return self.db.query_db(query, data)
 
+    def get_all_zip(self, zip_code):
+        query = "SELECT * FROM users WHERE mentor='Yes' AND zip_code=%s"
+        data = [zip_code]
+        return self.db.query_db(query, data)
+
 
 
 

@@ -94,7 +94,7 @@
 		padding-left: 10px;
 		border: solid black 2px;
 		width: 380px;
-		height: 500px;
+		min-height: 500px;
 	}
 
 .welcome {

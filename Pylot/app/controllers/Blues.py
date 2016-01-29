@@ -26,6 +26,8 @@ class Blues(Controller):
         session['username'] = status['user']['username']
         session['bio'] = status['user']['bio']
         session['id'] = status['user']['id']
+        session['current_zip_code'] = status['user']['zip_code']
+        print session['current_zip_code']
         print session
         return redirect('/dashboard')
 
@@ -117,8 +119,15 @@ class Blues(Controller):
   def dash(self):
       user_info = self.models['Blue'].get_all_mentors()
       concern_info = self.models['Blue'].get_all_concerns(session['id'])
-      print concern_info
-      return self.load_view('dashboard.html', user_info=user_info, concern_info= concern_info)
+      mentor_zip_code = self.models['Blue'].get_all_zip(session['current_zip_code'])
+
+      # for loop and save each name into a someting and save that to sessions
+      session['list_of_mentors'] = ""
+      for mentor in session['mentors_in_zip']:
+        session['list_of_mentors'] += mentor['username'] + " "
+
+      session['mentors_in_zip'] = mentor_zip_code#[0]['username']
+      return self.load_view('dashboard.html', user_info=user_info, concern_info=concern_info)
 
   def filter(self, checked_concerns):
       string = ""
