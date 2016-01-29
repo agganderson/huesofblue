@@ -1,5 +1,8 @@
 .container {
 	padding-bottom: 50px;
+	padding-left: 20px;
+	width: 1170px;
+	margin-right: 20px;
 	margin-left: 20px;
 }
 
@@ -62,28 +65,50 @@
 	color: #000000;
 }
 
-#filters {
+#filters, #map, #bio {
+	vertical-align: top;
 	display: inline-block;
-	padding: 10px;
-	margin-bottom: 10px;
-	width: 330px;
+	margin-left: 30px;
+}
+
+	#filters {
+		padding: 10px;
+		margin-bottom: 10px;
+		width: 280px;
+		border: solid black 2px;
+	}
+
+	#counselor_list {
+		width: 650px;
+		padding: 10px;
+		border: solid black 2px;
+	}
+
+	#map {
+		border: solid black 2px;
+		width: 350px;
+		height: 350px;
+	}
+
+	#bio {
+		padding-left: 10px;
+		border: solid black 2px;
+		width: 380px;
+		height: 500px;
+	}
+
+.welcome {
 	border: solid black 2px;
+	margin-left: 280px;
+	margin-bottom: 10px;
+	width: 600px;
+	height: 80px;
+	vertical-align: top;
 }
 
 #counselor_list {
-	display: inline-block;
-	width: 650px;
-	padding: 10px;
-	border: solid black 2px;
+	margin-top: 10px;
+	width: 1100px;
 }
-
-/*#map {
-	display: inline-block;
-	border: solid black 2px;
-	width: 300px;
-	height: 300px;
-}*/
-
-
 
 

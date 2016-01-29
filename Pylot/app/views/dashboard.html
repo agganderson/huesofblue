@@ -13,6 +13,62 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+
+	<style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <script type="text/javascript">
+
+         $(document).ready(function(){
+          
+          window.initMap= function() {
+            $.get("https://maps.googleapis.com/maps/api/geocode/json?address=95113&key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc", function(res) {
+                    latitude = res.results[0].geometry.location.lat;
+                    longitude= res.results[0].geometry.location.lng;
+
+                    var myLatLng = {lat: latitude, lng: longitude};
+
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15,
+                      center: myLatLng
+                    });
+
+                    var marker = new google.maps.Marker({
+                      position: myLatLng,
+                      map: map,
+                      title: 'Hello World!'
+                    });
+
+                    // this is the info window
+                    var contentString = '<div id="content">'+ //container
+                      '<div id="siteNotice">'+ //second div
+                      '</div>'+ 
+                      '<h5 id="firstHeading" class="firstHeading">Mentors</h5>'+
+                      '<div id="bodyContent">'+
+                      '<p>this will be a list of all the mentors</p>'+
+                      '</div>'+
+                      '</div>'; //first div
+
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+
+                  marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                  });
+            	}, "json");
+                };
+      })
+    </script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc&callback=initMap"
+    async defer></script>
 	</head>	
 	<body>
 		<nav class="navbar navbar-inverse">
@@ -26,93 +82,64 @@
 	   			</ul>
 	  		</div>
 		</nav>
-		<div class='container'>
-			<div id='filters'>				
-				<form action='/filter' >
-					<input type='checkbox' name='issue1' value='issue1'>
-					<label>Anxiety</label>
-								<br>
-					<input type='checkbox' name='issue2' value='issue2'>
-					<label>Depression</label>
-								<br>
-					<input type='checkbox' name='issue3' value='issue3'>
-					<label>Stress</label>
-								<br>
-					<input type='checkbox' name='issue4' value='issue4'>
-					<label>Substance Abuse</label>
-								<br>
-					<input type='checkbox' name='issue5' value='issue5'>
-					<label>Self-Esteem</label>
-								<br>
-					<input type='checkbox' name='issue6' value='issue6'>
-					<label>Relationships</label>
-								<br>
-					<input type='checkbox' name='issue7' value='issue7'>
-					<label>Grief</label>
-								<br>
-					<input type='checkbox' name='issue8' value='issue8'>
-					<label>General Support / Other</label>
-								<br>
-					<input type='submit' value='Filter' class='btn btn-primary'>
-				</form>
+
+		<div class="container">
+
+			<div class="welcome text-center">
+				<h3>Welcome {{session['username']}}</h3>
 			</div>
-			<div id='counselor_list'>
-				{% for user in user_info %}
-					<h3>Mentor Name: <a href="/profile">{{user['username']}}</a></h3>
 
-					<h3>Mentor Name: {{user['username']}}</h3>
-					<h4>Bio:</h4>
-					<p>{{user['bio']}}</p>
-					<h4>Why this person can help you:</h4>
-					<p>{{user['form_q1']}}</p>
-				{% endfor %}
-			</div>		    
-			<div id="map">
-    		</div>
-		</div>
-		<div>
-			<div>
-				<div class ="aboutme col-md-8 col-md-offset-2">
-					<div class = "row">
-						<div class = "prof_info" style="display: inline-block">
-							<h2 style ="display: inline-block">About Me</h2>
-							<p>Name: </p>
-							<p>Description: </p>
-						</div>
-					</div>
+			<div class="top">
+				<div id='filters'>				
+					<form action='/filter'>
+						<input type='checkbox' name='issue1' value='issue1'>
+						<label>Anxiety</label>
+									<br>
+						<input type='checkbox' name='issue2' value='issue2'>
+						<label>Depression</label>
+									<br>
+						<input type='checkbox' name='issue3' value='issue3'>
+						<label>Stress</label>
+									<br>
+						<input type='checkbox' name='issue4' value='issue4'>
+						<label>Substance Abuse</label>
+									<br>
+						<input type='checkbox' name='issue5' value='issue5'>
+						<label>Self-Esteem</label>
+									<br>
+						<input type='checkbox' name='issue6' value='issue6'>
+						<label>Relationships</label>
+									<br>
+						<input type='checkbox' name='issue7' value='issue7'>
+						<label>Grief</label>
+									<br>
+						<input type='checkbox' name='issue8' value='issue8'>
+						<label>General Support / Other</label>
+									<br>
+						<input type='submit' value='Filter' class='btn btn-primary'>
+					</form>
 				</div>
+				<div id="bio">
+					<h3>Name: </h3>
+					<h3>Concerns: </h3>
+					<button type="button" class="btn btn-primary">Edit</button>
+				</div>
+				<div id="map">
+	    		</div>
+	    	</div>
+
+	    	<div class="bottom">
+				<div id='counselor_list'>
+					{% for user in user_info %}
+						<h3>Mentor Name: <a href="/profile">{{user['username']}}</a></h3>
+						<h4>Bio:</h4>
+						<p>{{user['bio']}}</p>
+						<h4>Why this person can help you:</h4>
+						<p>{{user['form_q1']}}</p>
+					{% endfor %}
+				</div>	
 			</div>	
+
 		</div>
-		
-		<div class ="connections col-md-8 col-md-offset-2">
-			<h3>Connections</h3>
-			<table class="table table-striped">
-	    		<thead>
-	      		<tr>
-			       	<th>First name</th>
-			        <th>Last name</th>
-			        <th>Profile</th>
-	     	 	</tr>
-	    		</thead>
-	    		<tbody>
-	      		<tr>
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td><a href="">LINK</a></td>
-
-			      </tr>
-			      <tr>
-			        <td>Mary</td>
-			        <td>Moe</td>
-			        <td><a href="">LINK</a></td>
-			      </tr>
-			      <tr>
-			        <td>July</td>
-			        <td>Dooley</td>
-			        <td><a href="">LINK</a></td>
-			      </tr>
-			    </tbody>
-			  </table>
-
 	</body>
 </html>
