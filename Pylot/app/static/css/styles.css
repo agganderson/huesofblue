@@ -3,10 +3,6 @@
 	margin-left: 80px;
 }
 
-.container-fluid {
-	background-color: #0061a3;
-}
-
 .navbar-inverse .navbar-brand {
 	color: white;
 }
@@ -30,14 +26,6 @@
 
 .background {
 	background: url("../img/sunset.jpg");
-	background-size: 1000px 300px;
-	width: 1000px; 
-	height: 300px;
-	border: 2px solid black;
-}
-
-.second_background {
-	background: url("../img/mountains.jpg");
 	background-size: 1000px 300px;
 	width: 1000px; 
 	height: 300px;
