@@ -125,6 +125,10 @@ class Blues(Controller):
 
       return redirect('/dashboard')
 
+  def profile(self, id):
+      mentor_info = self.models['Blue'].get_mentor_by_id()
+      return self.load_view('profile.html', mentor_info=mentor_info)
+
 
   def logout(self):
       session.clear()
