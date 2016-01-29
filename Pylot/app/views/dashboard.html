@@ -27,46 +27,50 @@
 	  </div>
 	</nav>
 		<div class='container'>
-		<div id='filters'>
-			<form>
-				<input type='checkbox' name='issue1' value='issue1'>
-				<label>Anxiety</label>
-								<br>
-				<input type='checkbox' name='issue2' value='issue2'>
-				<label>Depression</label>
-								<br>
-				<input type='checkbox' name='issue3' value='issue3'>
-				<label>Stress</label>
-								<br>
-				<input type='checkbox' name='issue4' value='issue4'>
-				<label>Substance Abuse</label>
-								<br>
-				<input type='checkbox' name='issue5' value='issue5'>
-				<label>Self-Esteem</label>
-								<br>
-				<input type='checkbox' name='issue6' value='issue6'>
-				<label>Relationships</label>
-								<br>
-				<input type='checkbox' name='issue7' value='issue7'>
-				<label>Grief</label>
-								<br>
-				<input type='checkbox' name='issue8' value='issue8'>
-				<label>General Support / Other</label>
-								<br>
-				<input type='submit' value='Filter' class='btn btn-primary'>
-			</form>
-		</div>
-		<div id='counselor_list'>
-			{% for user in user_info %}
-				<h3>Mentor Name: {{user['first_name']}} {{user['last_name']}}</h3>
-				<h4>Issues this counselor can help you with: {{user['issues']}}</h4>
-				<h4>Bio:</h4>
-				<p>{{user['bio']}}</p>
-				<h4>Why this person can help you:</h4>
-				<p>{{user['form_q1']}}</p>
-				<button type="button" class="btn btn-primary btn-lg">Connect</button>
-			{% endfor %}
-		</div>
+			<div id='filters'>
+				<form>
+					<input type='checkbox' name='issue1' value='issue1'>
+					<label>Anxiety</label>
+									<br>
+					<input type='checkbox' name='issue2' value='issue2'>
+					<label>Depression</label>
+									<br>
+					<input type='checkbox' name='issue3' value='issue3'>
+					<label>Stress</label>
+									<br>
+					<input type='checkbox' name='issue4' value='issue4'>
+					<label>Substance Abuse</label>
+									<br>
+					<input type='checkbox' name='issue5' value='issue5'>
+					<label>Self-Esteem</label>
+									<br>
+					<input type='checkbox' name='issue6' value='issue6'>
+					<label>Relationships</label>
+									<br>
+					<input type='checkbox' name='issue7' value='issue7'>
+					<label>Grief</label>
+									<br>
+					<input type='checkbox' name='issue8' value='issue8'>
+					<label>General Support / Other</label>
+									<br>
+					<input type='submit' value='Filter' class='btn btn-primary'>
+				</form>
+			</div>
+			<div id='counselor_list'>
+				{% for user in user_info %}
+					<h3>Mentor Name: {{user['first_name']}} {{user['last_name']}}</h3>
+					<h4>Issues this counselor can help you with: {{user['issues']}}</h4>
+					<h4>Bio:</h4>
+					<p>{{user['bio']}}</p>
+					<h4>Why this person can help you:</h4>
+					<p>{{user['form_q1']}}</p>
+					<button type="button" class="btn btn-primary btn-lg">Connect</button>
+				{% endfor %}
+			</div>
+
+			    
+			<div id="map">
+    		</div>
 		</div>
 	</body>
 </html>
