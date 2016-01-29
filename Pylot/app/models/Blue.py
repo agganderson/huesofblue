@@ -15,8 +15,7 @@ class Blue(Model):
             return False
 
     def create_user(self, user_info, concern_info):
-        print concern_info, "sdfs"
-    	EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
+        EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
 
          

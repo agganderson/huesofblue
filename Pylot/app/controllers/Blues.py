@@ -23,7 +23,9 @@ class Blues(Controller):
           flash(message, 'login_errors')
         return redirect('/login')
       else:
-        session['username'] = user[0]['username']
+        session['username'] = status['user']['username']
+        session['bio'] = status['user']['bio']
+        print session
         return redirect('/dashboard')
 
 
