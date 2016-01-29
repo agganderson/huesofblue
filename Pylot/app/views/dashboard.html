@@ -74,7 +74,7 @@
 		<nav class="navbar navbar-inverse">
 	  		<div class="container-fluid">
 	    		<div class="navbar-header">
-	      		<a class="navbar-brand" href="#">Hues of Blue</a>
+	      		<a class="navbar-brand" href="/">Hues of Blue</a>
 	    		</div>
 	    		<ul class="nav navbar-nav navbar-right">
 	      			<li><a href="/dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -88,7 +88,6 @@
 			<div class="welcome text-center">
 				<h3>Welcome {{session['username']}}</h3>
 			</div>
-<<<<<<< HEAD
 
 			<div class="top">
 				<div id='filters'>				
@@ -119,35 +118,12 @@
 									<br>
 						<input type='submit' value='Filter' class='btn btn-primary'>
 					</form>
-=======
-			<div id='counselor_list'>
-				{% for user in user_info %}
-					<h3>Mentor Name: <a href="/profile/{{user['id']}}">{{user['username']}}</a></h3>
-					<h3>Mentor Name: {{user['username']}}</h3>
-					<h4>Bio:</h4>
-					<p>{{user['bio']}}</p>
-					<h4>Why this person can help you:</h4>
-					<p>{{user['form_q1']}}</p>
-				{% endfor %}
-			</div>		    
-			<div id="map">
-    		</div>
-		</div>
-		<div>
-			<div>
-				<div class ="aboutme col-md-8 col-md-offset-2">
-					<div class = "row">
-						<div class = "prof_info" style="display: inline-block">
-							<p>Username: {{session['username']}}</p>
-							<p>Bio: {{session['bio']}}</p>
-						</div>
-					</div>
->>>>>>> 791ee122ee39d2cf754f94f26e39f3645fdef350
+
 				</div>
 				<div id="bio">
-					<h3>Name: </h3>
-					<h3>Concerns: </h3>
-					<button type="button" class="btn btn-primary">Edit</button>
+						<h3>Name: {{ session['username'] }} </h3>
+						<h3>Concerns: </h3>
+						<button type="button" class="btn btn-primary">Edit</button>
 				</div>
 				<div id="map">
 	    		</div>
@@ -156,7 +132,7 @@
 	    	<div class="bottom">
 				<div id='counselor_list'>
 					{% for user in user_info %}
-						<h3>Mentor Name: <a href="/profile">{{user['username']}}</a></h3>
+						<h3>Mentor Name: <a href="/profile/{{user['id']}}">{{user['username']}}</a></h3>
 						<h4>Bio:</h4>
 						<p>{{user['bio']}}</p>
 						<h4>Why this person can help you:</h4>
@@ -164,11 +140,6 @@
 					{% endfor %}
 				</div>	
 			</div>	
-<<<<<<< HEAD
-
 		</div>
-=======
-		</div>		
->>>>>>> 791ee122ee39d2cf754f94f26e39f3645fdef350
 	</body>
 </html>
