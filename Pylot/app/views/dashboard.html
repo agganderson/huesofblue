@@ -27,7 +27,7 @@
          $(document).ready(function(){
           
           window.initMap= function() {
-            $.get("https://maps.googleapis.com/maps/api/geocode/json?address=95113&key=API KEY HERE", function(res) {
+            $.get("https://maps.googleapis.com/maps/api/geocode/json?address=API KEY HERE", function(res) {
                     latitude = res.results[0].geometry.location.lat;
                     longitude= res.results[0].geometry.location.lng;
 
@@ -121,9 +121,21 @@
 
 				</div>
 				<div id="bio">
-						<h3>Name: {{ session['username'] }} </h3>
-						<h3>Bio: {{ session['bio'] }} </h3>
-						<h3>Concerns: {{ concern_info }} </h3>
+						<h3>Name:  </h3>
+						<h4>{{ session['username'] }}</h4>
+						<h3>Concerns: </h3>
+						<ul>
+						{% for key, value in concern_info[0].iteritems() : %}
+							{% if value == '1' %}
+   								<li>{{ key }}</li>
+   							{% endif %}
+   						{% endfor %}
+   						</ul>			
+   						<h3>Bio: </h3>
+   						<h4> {{ session['bio'] }} </h4>
+   						<h3>Connections: </h3>
+   						<h4>CONNECTIONS HERES</h4>
+
 						<button type="button" class="btn btn-primary">Edit</button>
 				</div>
 				<div id="map">
