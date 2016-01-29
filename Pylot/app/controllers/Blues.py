@@ -26,6 +26,7 @@ class Blues(Controller):
         session['username'] = status['user']['username']
         session['bio'] = status['user']['bio']
         session['id'] = status['user']['id']
+        session['filtered_mentors'] = []
         print session
         return redirect('/dashboard')
 
@@ -112,7 +113,8 @@ class Blues(Controller):
   def dash(self):
       user_info = self.models['Blue'].get_all_mentors()      
       concern_info = self.models['Blue'].get_all_concerns(session['id'])
-      return self.load_view('dashboard.html', user_info=user_info, m_filter = session['filtered_mentors'], concern_info= concern_info)
+      connection_info = self.models['Blue'].disp_connections(session['id'])
+      return self.load_view('dashboard.html', user_info=user_info, m_filter = session['filtered_mentors'], concern_info= concern_info, connection_info=connection_info)
 
   def filter(self):
     string = ""
@@ -171,8 +173,12 @@ class Blues(Controller):
   def profile(self, id):
       print id
       mentor_info = self.models['Blue'].get_mentor_by_id(id)
-      print mentor_info
+
       return self.load_view('profile.html', mentor_info=mentor_info)
+
+  def connect(self, mentor_id):
+      connection = self.models['Blue'].make_connections(session['id'], mentor_id)
+      return redirect('/dashboard')   
 
 
   def logout(self):

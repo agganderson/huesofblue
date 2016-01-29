@@ -141,12 +141,21 @@ class Blue(Model):
         select_mentored= "SELECT * FROM users WHERE mentor IS NULL"
         return self.db.query_db(select_mentored)
 
-    def disp_connections(self, user_info):
+    def disp_connections(self, connection_info):
 
-        query = "SELECT first_name, username FROM users WHERE id IN (SELECT users_id1 FROM connections WHERE users_id = %s)"
-        data= [user_info[id]]
+        query = "SELECT username, email FROM users WHERE id IN (SELECT users_id FROM connections WHERE users_id1 = %s)"
+        data= [connection_info]
         return self.db.query_db(query, data)
 
+    def make_connections(self, mentor_id, current_user):
+        query = "INSERT INTO connections (users_id, users_id1, created_at, updated_at, status) VALUES (%s,%s, NOW(),NOW(), 'connected')"
+    
+        data = [
+            current_user,
+            mentor_id                        
+            ]
+        print data
+        return self.db.query_db(query, data)
 
 
 

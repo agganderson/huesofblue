@@ -25,6 +25,7 @@ routes['GET']['/dashboard'] = 'Blues#dash'
 routes['/profile/<id>'] = 'Blues#profile'
 routes['/logout'] = 'Blues#logout'
 routes['POST']['/filter'] = 'Blues#filter'
+routes['POST']['/connect/<mentor_id>'] = 'Blues#connect'
 """
     You can add routes and specify their handlers as follows:
 

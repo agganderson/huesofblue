@@ -135,7 +135,12 @@
 					<h3>Bio: </h3>
 					<h4> {{ session['bio'] }} </h4>
 					<h3>Connections: </h3>
-					<h4>CONNECTIONS HERE</h4>
+						<ul>
+						{% for connections in connection_info %}
+							<li><p>Username: {{connections['username']}}
+							Email: {{connections['email']}}</p></li>
+						{% endfor %}
+
 
 					<button type="button" class="btn btn-primary">Edit</button>
 				</div>

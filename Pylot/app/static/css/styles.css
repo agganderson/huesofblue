@@ -2,8 +2,6 @@
 	padding-bottom: 50px;
 	padding-left: 20px;
 	width: 1170px;
-	margin-right: 20px;
-	margin-left: 20px;
 }
 
 .navbar-inverse .navbar-brand {
@@ -75,6 +73,7 @@
 		padding: 10px;
 		margin-bottom: 10px;
 		width: 280px;
+		height: 350px;
 		border: solid black 2px;
 	}
 
@@ -86,7 +85,7 @@
 
 	#map {
 		border: solid black 2px;
-		width: 350px;
+		width: 280px;
 		height: 350px;
 	}
 
@@ -94,12 +93,12 @@
 		padding-left: 10px;
 		border: solid black 2px;
 		width: 380px;
-		height: 500px;
+		overflow: scroll;
 	}
 
 .welcome {
 	border: solid black 2px;
-	margin-left: 280px;
+	margin-left: 230px;
 	margin-bottom: 10px;
 	width: 600px;
 	height: 80px;
