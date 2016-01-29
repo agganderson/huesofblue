@@ -23,6 +23,7 @@ class Blues(Controller):
           flash(message, 'login_errors')
         return redirect('/login')
       else:
+        session['username'] = user[0]['username']
         return redirect('/dashboard')
 
 
@@ -42,7 +43,6 @@ class Blues(Controller):
         'bio' : request.form['bio'],
         'mentor' : request.form['mentor']
       }
-      print user_info
 
       concern_forms = {
         'concerns' : request.form.getlist('concerns')
@@ -95,7 +95,7 @@ class Blues(Controller):
         concern_info['other'] = False 
 
       
-      print session
+      
       
 
       
@@ -113,7 +113,16 @@ class Blues(Controller):
 
   def dash(self):
       user_info = self.models['Blue'].get_all_mentors()
+      # concern_info = self.models['Blue'].get_all_concerns(user_info)
+      print user_info
       return self.load_view('dashboard.html', user_info=user_info)
+
+  def filter(self, checked_concerns):
+      string = ""
+      mentor_concerns = self.models['Blue'].get_mentor_concerns(string)
+
+      return redirect('/dashboard')
+
 
   def logout(self):
       session.clear()
