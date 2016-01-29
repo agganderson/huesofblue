@@ -28,42 +28,43 @@
 		</nav>
 		<div class='container'>
 			<div id='filters'>				
-				<form action='/filter' >
-					<input type='checkbox' name='issue1' value='issue1'>
+				<form action='/filter' method="POST">
+					<input type='checkbox' name='issue' value='anxiety'>
 					<label>Anxiety</label>
 								<br>
-					<input type='checkbox' name='issue2' value='issue2'>
+					<input type='checkbox' name='issue' value='depression'>
 					<label>Depression</label>
 								<br>
-					<input type='checkbox' name='issue3' value='issue3'>
+					<input type='checkbox' name='issue' value='stress'>
 					<label>Stress</label>
 								<br>
-					<input type='checkbox' name='issue4' value='issue4'>
+					<input type='checkbox' name='issue' value='substance_abuse'>
 					<label>Substance Abuse</label>
 								<br>
-					<input type='checkbox' name='issue5' value='issue5'>
-					<label>Self-Esteem</label>
+					<input type='checkbox' name='issue' value='eating_disorders'>
+					<label>Eating Disorders</label>
 								<br>
-					<input type='checkbox' name='issue6' value='issue6'>
+					<input type='checkbox' name='issue' value='relationships'>
 					<label>Relationships</label>
 								<br>
-					<input type='checkbox' name='issue7' value='issue7'>
+					<input type='checkbox' name='issue' value='grief'>
 					<label>Grief</label>
 								<br>
-					<input type='checkbox' name='issue8' value='issue8'>
+					<input type='checkbox' name='issue' value='other'>
 					<label>General Support / Other</label>
 								<br>
 					<input type='submit' value='Filter' class='btn btn-primary'>
 				</form>
 			</div>
 			<div id='counselor_list'>
-				{% for user in user_info %}
-					<h3>Mentor Name: <a href="/profile/{{user['id']}}">{{user['username']}}</a></h3>
-					<h3>Mentor Name: {{user['username']}}</h3>
+				{{m_filter}}
+				{% for filter in m_filter %}
+					<h3>Mentor Name: <a href="/profile/{{filter['users_id']}}">{{filter['username']}}</a></h3>
+					<h3>Mentor Name: {{filter['username']}}</h3>
 					<h4>Bio:</h4>
-					<p>{{user['bio']}}</p>
+					<p>{{filter['bio']}}</p>
 					<h4>Why this person can help you:</h4>
-					<p>{{user['form_q1']}}</p>
+					<p>{{filter['form_q1']}}</p>
 				{% endfor %}
 			</div>		    
 			<div id="map">

@@ -76,11 +76,6 @@ class Blues(Controller):
       else:
         concern_info['eating_disorders'] = False
       
-      if 'self_esteem' in concern_forms['concerns']:
-        concern_info['self_esteem'] = True
-      else:
-        concern_info['self_esteem'] = False 
-      
       if 'relationships' in concern_forms['concerns']:
         concern_info['relationships'] = True
       else:
@@ -116,17 +111,68 @@ class Blues(Controller):
   def dash(self):
       user_info = self.models['Blue'].get_all_mentors()
       # concern_info = self.models['Blue'].get_all_concerns(user_info)
-      print user_info
-      return self.load_view('dashboard.html', user_info=user_info)
+      # print user_info
+      return self.load_view('dashboard.html', user_info=user_info, m_filter = session['filtered_mentors'])
 
-  def filter(self, checked_concerns):
-      string = ""
-      mentor_concerns = self.models['Blue'].get_mentor_concerns(string)
+  def filter(self):
+    string = ""
+    studd = request.form.getlist('issue')
+    print studd, "hel"
+    checked_concerns= {
+    'concerns' : request.form.getlist('issue')
+    }
 
-      return redirect('/dashboard')
+    print checked_concerns, "hel"
+    if 'anxiety' in checked_concerns['concerns']:
+      if string=="":
+        string = "anxiety"
+      else:
+        string += " AND anxiety"
+    if 'depression' in checked_concerns['concerns']:
+      if string=="":
+        string = "depression"
+      else:
+        string += " AND depression"
+    if 'stress' in checked_concerns['concerns']:
+      if string=="":
+        string = "stress"
+      else:
+        string += " AND stress"
+    if 'substance_abuse' in checked_concerns['concerns']:
+      if string=="":
+        string = "substance_abuse"
+      else:
+        string += " AND substance_abuse"
+    if 'eating_disorders' in checked_concerns['concerns']:
+      if string=="":
+        string = "eating_disorders"
+      else:
+        string += " AND eating_disorders"
+    if 'relationships' in checked_concerns['concerns']:
+      if string=="":
+        string = "relationships"
+      else:
+        string += " AND relationships"
+    if 'grief' in checked_concerns['concerns']:
+      if string=="":
+        string = "grief"
+      else:
+        string += " AND grief"
+    if 'other' in checked_concerns['concerns']:
+      if string=="":
+        string = "other"
+      else:
+        string += " AND other"
+
+    filtered_mentors = self.models['Blue'].get_mentor_concerns(string)
+    session['filtered_mentors'] = filtered_mentors
+
+    return redirect('/dashboard')
 
   def profile(self, id):
+      print id
       mentor_info = self.models['Blue'].get_mentor_by_id(id)
+      print mentor_info
       return self.load_view('profile.html', mentor_info=mentor_info)
 
 

@@ -24,7 +24,7 @@ routes['POST']['/user_create'] = 'Blues#user_create'
 routes['GET']['/dashboard'] = 'Blues#dash'
 routes['/profile/<id>'] = 'Blues#profile'
 routes['/logout'] = 'Blues#logout'
-routes['/filter'] = 'Blues#filter'
+routes['POST']['/filter'] = 'Blues#filter'
 """
     You can add routes and specify their handlers as follows:
 
