@@ -25,6 +25,7 @@ class Blues(Controller):
       else:
         session['username'] = status['user']['username']
         session['bio'] = status['user']['bio']
+        session['id'] = status['user']['id']
         print session
         return redirect('/dashboard')
 
@@ -115,9 +116,9 @@ class Blues(Controller):
 
   def dash(self):
       user_info = self.models['Blue'].get_all_mentors()
-      # concern_info = self.models['Blue'].get_all_concerns(user_info)
-      print user_info
-      return self.load_view('dashboard.html', user_info=user_info)
+      concern_info = self.models['Blue'].get_all_concerns(session['id'])
+      print concern_info
+      return self.load_view('dashboard.html', user_info=user_info, concern_info= concern_info)
 
   def filter(self, checked_concerns):
       string = ""
