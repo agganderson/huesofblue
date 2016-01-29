@@ -27,7 +27,7 @@
 	  		</div>
 		</nav>
 		<div class='container'>
-			<div id='filters'>
+			<div id='filters'>				
 				<form action='/filter' >
 					<input type='checkbox' name='issue1' value='issue1'>
 					<label>Anxiety</label>
@@ -59,12 +59,60 @@
 			<div id='counselor_list'>
 				{% for user in user_info %}
 					<h3>Mentor Name: <a href="/profile">{{user['username']}}</a></h3>
+
+					<h3>Mentor Name: {{user['username']}}</h3>
 					<h4>Bio:</h4>
 					<p>{{user['bio']}}</p>
 					<h4>Why this person can help you:</h4>
 					<p>{{user['form_q1']}}</p>
 				{% endfor %}
-			</div>
-		</div>		
+			</div>		    
+			<div id="map">
+    		</div>
+		</div>
+		<div>
+			<div>
+				<div class ="aboutme col-md-8 col-md-offset-2">
+					<div class = "row">
+						<div class = "prof_info" style="display: inline-block">
+							<h2 style ="display: inline-block">About Me</h2>
+							<p>Name: </p>
+							<p>Description: </p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+		<div class ="connections col-md-8 col-md-offset-2">
+			<h3>Connections</h3>
+			<table class="table table-striped">
+	    		<thead>
+	      		<tr>
+			       	<th>First name</th>
+			        <th>Last name</th>
+			        <th>Profile</th>
+	     	 	</tr>
+	    		</thead>
+	    		<tbody>
+	      		<tr>
+			        <td>John</td>
+			        <td>Doe</td>
+			        <td><a href="">LINK</a></td>
+
+			      </tr>
+			      <tr>
+			        <td>Mary</td>
+			        <td>Moe</td>
+			        <td><a href="">LINK</a></td>
+			      </tr>
+			      <tr>
+			        <td>July</td>
+			        <td>Dooley</td>
+			        <td><a href="">LINK</a></td>
+			      </tr>
+			    </tbody>
+			  </table>
+
 	</body>
 </html>
