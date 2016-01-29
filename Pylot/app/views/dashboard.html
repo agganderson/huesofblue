@@ -16,57 +16,110 @@
 	</head>	
 	<body>
 		<nav class="navbar navbar-inverse">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Hues of Blue</a>
-	    </div>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-	      <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-	    </ul>
-	  </div>
-	</nav>
+	  		<div class="container-fluid">
+	    		<div class="navbar-header">
+	      		<a class="navbar-brand" href="#">Hues of Blue</a>
+	    		</div>
+	    		<ul class="nav navbar-nav navbar-right">
+	      			<li><a href="/dashboard"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+	      			<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	   			</ul>
+	  		</div>
+		</nav>
 		<div class='container'>
-		<div id='filters'>
-			<form>
-				<input type='checkbox' name='issue1' value='issue1'>
-				<label>Anxiety</label>
+			<div id='filters'>
+				<form action='/filter' >
+					<input type='checkbox' name='issue1' value='issue1'>
+					<label>Anxiety</label>
 								<br>
-				<input type='checkbox' name='issue2' value='issue2'>
-				<label>Depression</label>
+					<input type='checkbox' name='issue2' value='issue2'>
+					<label>Depression</label>
 								<br>
-				<input type='checkbox' name='issue3' value='issue3'>
-				<label>Stress</label>
+					<input type='checkbox' name='issue3' value='issue3'>
+					<label>Stress</label>
 								<br>
-				<input type='checkbox' name='issue4' value='issue4'>
-				<label>Substance Abuse</label>
+					<input type='checkbox' name='issue4' value='issue4'>
+					<label>Substance Abuse</label>
 								<br>
-				<input type='checkbox' name='issue5' value='issue5'>
-				<label>Self-Esteem</label>
+					<input type='checkbox' name='issue5' value='issue5'>
+					<label>Self-Esteem</label>
 								<br>
-				<input type='checkbox' name='issue6' value='issue6'>
-				<label>Relationships</label>
+					<input type='checkbox' name='issue6' value='issue6'>
+					<label>Relationships</label>
 								<br>
-				<input type='checkbox' name='issue7' value='issue7'>
-				<label>Grief</label>
+					<input type='checkbox' name='issue7' value='issue7'>
+					<label>Grief</label>
 								<br>
-				<input type='checkbox' name='issue8' value='issue8'>
-				<label>General Support / Other</label>
+					<input type='checkbox' name='issue8' value='issue8'>
+					<label>General Support / Other</label>
 								<br>
-				<input type='submit' value='Filter' class='btn btn-primary'>
-			</form>
+					<input type='submit' value='Filter' class='btn btn-primary'>
+				</form>
+			</div>
+			<div id='counselor_list'>
+				{% for user in user_info %}
+					<h3>Mentor Name: {{user['username']}}</h3>
+					<h4>Bio:</h4>
+					<p>{{user['bio']}}</p>
+					<h4>Why this person can help you:</h4>
+					<p>{{user['form_q1']}}</p>
+					<button type="button" class="btn btn-primary btn-lg">Connect</button>
+				{% endfor %}
+			</div>
 		</div>
-		<div id='counselor_list'>
-			{% for user in user_info %}
-				<h3>Mentor Name: {{user['first_name']}} {{user['last_name']}}</h3>
-				<h4>Issues this counselor can help you with: {{user['issues']}}</h4>
-				<h4>Bio:</h4>
-				<p>{{user['bio']}}</p>
-				<h4>Why this person can help you:</h4>
-				<p>{{user['form_q1']}}</p>
-				<button type="button" class="btn btn-primary btn-lg">Connect</button>
-			{% endfor %}
+		<div>
+			<div>
+				<div class ="aboutme col-md-8 col-md-offset-2">
+					<div class = "row">
+						<div class = "prof_info" style="display: inline-block">
+							<h2 style ="display: inline-block">About Me</h2>
+							<p>Name: </p>
+							<p>Description: </p>
+						</div>
+					</div>
+				</div>
+			</div>	
 		</div>
+		<div class ="topics col-md-8 col-md-offset-2">
+
+				<h3>Helping with</h3>
+				<button  class="btn btn-default"> Edit</button>
+				<ul>
+					<li>ISSUES1</li>
+					<li>ISSUES2</li>
+					<li>ISSUES3</li>
+					<li>ISSUES4</li>
+				</ul>
+			</div>
+		<div class ="connections col-md-8 col-md-offset-2">
+			<h3>Connections</h3>
+			<table class="table table-striped">
+	    		<thead>
+	      		<tr>
+			       	<th>First name</th>
+			        <th>Last name</th>
+			        <th>Profile</th>
+	     	 	</tr>
+	    		</thead>
+	    		<tbody>
+	      		<tr>
+			        <td>John</td>
+			        <td>Doe</td>
+			        <td><a href="">LINK</a></td>
+
+			      </tr>
+			      <tr>
+			        <td>Mary</td>
+			        <td>Moe</td>
+			        <td><a href="">LINK</a></td>
+			      </tr>
+			      <tr>
+			        <td>July</td>
+			        <td>Dooley</td>
+			        <td><a href="">LINK</a></td>
+			      </tr>
+			    </tbody>
+			  </table>
 		</div>
 	</body>
 </html>

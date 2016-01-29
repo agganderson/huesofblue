@@ -27,6 +27,7 @@ routes['POST']['/mentor_private'] = 'Blues#private'
 routes['GET']['/mentor_public'] = 'Blues#public'
 routes['GET']['/admin_view'] = 'Blues#admin'
 routes['/logout'] = 'Blues#logout'
+routes['/filter'] = 'Blues#filter'
 """
     You can add routes and specify their handlers as follows:
 
