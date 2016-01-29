@@ -22,7 +22,7 @@ routes['POST']['/signin'] = 'Blues#signin'
 routes['GET']['/user_reg'] = 'Blues#user_reg'
 routes['POST']['/user_create'] = 'Blues#user_create'
 routes['GET']['/dashboard'] = 'Blues#dash'
-routes['/profile'] = 'Blues#profile'
+routes['/profile/<id>'] = 'Blues#profile'
 routes['/logout'] = 'Blues#logout'
 routes['/filter'] = 'Blues#filter'
 """

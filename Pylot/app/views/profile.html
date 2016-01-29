@@ -30,11 +30,12 @@
 		<div class="container">
 			<div class ="aboutme col-md-8 col-md-offset-2">
 				<div class = "row">
-					<img src="http://learn.codingdojo.com/assets/profile_pic.png" width="200px" height="200px">
 					<div class = "prof_info" style="display: inline-block">
-						<h2 style ="display: inline-block">About Me</h2>
-						<p>Name: </p>
-						<p>Description: </p>
+						<h2 style ="display: inline-block">About This Mentor:</h2>
+						<p>Username: {{mentor_info[0]['username']}}</p>
+
+
+						<p>Bio: {{mentor_info[0]['bio']}}</p>
 					</div>
 				</div>
 			</div>
@@ -79,45 +80,7 @@
 			    </tbody>
 			  </table>
 		</div>
-		<div class ="requests col-md-8 col-md-offset-2">
-			<h3>Requested Support</h3>
-			<table class="table table-striped">
-	    		<thead>
-	      		<tr>
-			       	<th>First name</th>
-			        <th>Last name</th>
-			        <th>Profile</th>
-			        <th colspan = "2">Actions</th>
-	     	 	</tr>
-	    		</thead>
-	    		<tbody>
-	      		<tr>
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td><a href="">LINK</a></td>
-			        <td><a href="">Approve</a></td>
-			        <td><a href="">Decline</a></td>
-
-			      </tr>
-			      <tr>
-			        <td>Mary</td>
-			        <td>Moe</td>
-			        <td><a href="">LINK</a></td>
-			        <td><a href="">Approve</a></td>
-			        <td><a href="">Decline</a></td>
-			      </tr>
-			      <tr>
-			        <td>July</td>
-			        <td>Dooley</td>
-			        <td><a href="">LINK</a></td>
-			        <td><a href="">Approve</a></td>
-			        <td><a href="">Decline</a></td>
-			      </tr>
-			    </tbody>
-			  </table>
-
-		</div>
-
+		
 
 	</div>
 </body>
