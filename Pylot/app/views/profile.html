@@ -29,7 +29,7 @@
 	  	</nav>
 	<div class='container'>
 		<div id='counselor_info' class='col-md-offset-2'>
-			<h3>Mentor username: {{mentor_info[0]['id']}}</h3>
+			<h3>Mentor username: {{mentor_info[0]['username']}}</h3>
 			<h3>Bio: {{mentor_info[0]['bio']}}</h3>
 			<form action='/connect/{{mentor_info[0]['id']}}' method='POST'>
 				<input class= "btn btn-primary btn-lg btn-block"type='submit' value='Connect'>

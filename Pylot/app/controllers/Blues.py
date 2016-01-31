@@ -116,14 +116,14 @@ class Blues(Controller):
       user_info = self.models['Blue'].get_all_mentors()      
       concern_info = self.models['Blue'].get_all_concerns(session['id'])
       connection_info = self.models['Blue'].disp_connections(session['id'])
-      mentor_zip_code = self.models['Blue'].get_all_zip(session['current_zip_code'])
+      session['mentors_in_zip'] = self.models['Blue'].get_all_zip(session['current_zip_code'])
 
       # for loop and save each name into a someting and save that to sessions
       session['list_of_mentors'] = ""
       for mentor in session['mentors_in_zip']:
         session['list_of_mentors'] += mentor['username'] + " "
 
-      session['mentors_in_zip'] = mentor_zip_code#[0]['username']
+      # session['mentors_in_zip'] = mentor_zip_code#[0]['username']
       return self.load_view('dashboard.html', user_info=user_info, m_filter = session['filtered_mentors'], concern_info= concern_info, connection_info=connection_info)
 
 

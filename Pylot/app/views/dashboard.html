@@ -30,7 +30,7 @@
           
           window.initMap= function() {
 
-            $.get("https://maps.googleapis.com/maps/api/geocode/json?address={{ session['current_zip_code'] }}&key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc", function(res) {
+            $.get("https://maps.googleapis.com/maps/api/geocode/json?address={{ session['current_zip_code'] }}&key=REPLACE", function(res) {
                     latitude = res.results[0].geometry.location.lat;
                     longitude= res.results[0].geometry.location.lng;
 
@@ -70,14 +70,12 @@
     </script>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVgv4xUH70VJdj1vAG9ze2IDVr3oH6mnc&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=REPLACE&callback=initMap"
     async defer></script>
 
 	</head>	
 	<body>			
-		         	{% for mentor in session['mentors_in_zip'] %}
-		         		{{mentor['username']}}
-   					{% endfor %}
+
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
