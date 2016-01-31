@@ -31,6 +31,7 @@
           window.initMap= function() {
 
             $.get("https://maps.googleapis.com/maps/api/geocode/json?address={{ session['current_zip_code'] }}&key=REPLACE", function(res) {
+
                     latitude = res.results[0].geometry.location.lat;
                     longitude= res.results[0].geometry.location.lng;
 
@@ -69,8 +70,8 @@
       })
     </script>
 
-
     <script src="https://maps.googleapis.com/maps/api/js?key=REPLACE&callback=initMap"
+
     async defer></script>
 
 	</head>	
