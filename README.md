@@ -1,36 +1,19 @@
-<<<<<<< HEAD
-# Pylot MVC (beta)
-Pylot MVC is a lightweight MVC framework built in Python leveraging flask.
+Huesofblue is a developing platform intended to provide support to anyone at anytime and anywhere. The current project was created over the course of five days by four developers who have been coding for a month and have not worked on a group project before. 
 
-This framework is currently still in development. If you want to play around with it read on or clone the stable version!
+Features:
 
-# Installation
+-Registeration as two types of users (mentors and mentees)
+-A map containing a list of mentors in your zipcode
+--in order for the map to appear, replace 'REPLACE' on the dashboard.html page with your own google api key
+-The ability to filter through mentors who are willing to help with a particular concern
+-The ability to connect with mentors in your given area. Once connected, the mentee receives the mentors contact information.
 
-First make sure you have pip installed. If you don't have it installed there are great instructions here: https://pip.pypa.io/en/latest/installing.html
+Validations needed:
+-Breaks when no options are checked of during filtering
 
-Next install virtualenv
-```
-sudo pip install virtualenv
-```
+Future Features:
+-Admin user to approve mentors
+-Limiting number of mentees a mentor can have
+-More information on mentors on site
+-A forum for each concern
 
-Clone the project
-```
-git clone -b stable https://github.com/Ketul-Patel/Pylot.git
-```
-
-cd into the project and source the setup file
-```
-cd Pylot
-. setup
-```
-
-Now you can start your development server like so:
-```
-python manage.py runserver
-```
-
-Enjoy! More details/features coming soon!
-=======
-# huesofblue
-Our python group project
->>>>>>> a8d5c0b6e73d56d8d6c6d6242fa80123985d33ce
