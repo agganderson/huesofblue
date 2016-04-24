@@ -18,7 +18,6 @@ class Blue(Model):
         EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
         errors = []
 
-         
 
         if len(user_info['first_name']) < 3:
             errors.append('First name must be longer than 3 character')
@@ -59,7 +58,7 @@ class Blue(Model):
             return {'status': False, 'errors' : errors}
         else:
             hashed_pw = self.bcrypt.generate_password_hash(user_info['password'])
-            query = "INSERT INTO users (form_q1, first_name, last_name, zip_code, email, username, password, bio, mentor, user_level, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,'nonadmin', NOW(), NOW())"
+            query = "INSERT INTO users (form_q1, first_name, last_name, zip_code, email, username, password, bio, mentor, user_level, created_at, updated_at) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, NOW(), NOW())"
             data = [
                 user_info['form_q1'], 
                 user_info['first_name'], 
@@ -69,7 +68,8 @@ class Blue(Model):
                 user_info['username'], 
                 hashed_pw, 
                 user_info['bio'], 
-                user_info['mentor']  
+                user_info['mentor'],
+                user_info['user_level']  
             ]
             self.db.query_db(query,data)
 

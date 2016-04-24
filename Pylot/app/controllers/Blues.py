@@ -49,6 +49,10 @@ class Blues(Controller):
         'bio' : request.form['bio'],
         'mentor' : request.form['mentor']
       }
+      if self.models['Blue'].is_first_record():
+        user_info['user_level'] = 'admin'
+      else:
+        user_info['user_level'] = 'user'
 
       concern_forms = {
         'concerns' : request.form.getlist('concerns')
@@ -94,16 +98,8 @@ class Blues(Controller):
         concern_info['other'] = True
       else:
         concern_info['other'] = False 
+ 
 
-      
-      
-      
-
-      
-      # if self.models['Blue'].is_first_record():
-      #   user_info['user_level'] = 'admin'
-      # else:
-      #   user_info['user_level'] = 'user'
       create_status = self.models['Blue'].create_user(user_info, concern_info)
       if create_status['status'] == True:
         return redirect('/login')
